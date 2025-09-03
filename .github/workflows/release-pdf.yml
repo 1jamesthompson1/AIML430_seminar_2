@@ -1,0 +1,28 @@
+name: Release PDFs on main
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install TeX Live and latexmk
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full latexmk
+      - name: Build summary.pdf
+        run: |
+          latexmk -pdf -interaction=nonstopmode summary.tex
+      - name: Build presentation.pdf
+        run: |
+          latexmk -pdf -interaction=nonstopmode presentation.tex
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            summary.pdf
+            presentation.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
