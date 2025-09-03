@@ -8,17 +8,34 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Build summary.pdf
         uses: xu-cheng/latex-action@v4
         with:
           root_file: summary.tex
+
       - name: Build presentation.pdf
         uses: xu-cheng/latex-action@v4
         with:
           root_file: presentation.tex
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create tag
+        id: create_tag
+        run: |
+          TAG_NAME="release-$(date +'%Y%m%d-%H%M%S')"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.create_tag.outputs.tag_name }}
           files: |
             summary.pdf
             presentation.pdf
