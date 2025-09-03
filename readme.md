@@ -38,7 +38,7 @@ When?
 
 The documents are in LaTeX. The summary report is called [summary.tex](summary.tex) and the presentation is called [presentation.tex](presentation.tex).
 
-The output pdfs of these can be found in the [output](output/) directory.
+The output pdfs of these can be found in the release page.
 
 The bibliography is in Bibtex format, [references.bib](references.bib).
 
