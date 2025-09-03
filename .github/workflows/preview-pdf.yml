@@ -8,23 +8,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install TeX Live and latexmk
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full latexmk
       - name: Build summary.pdf
-        run: |
-          latexmk -pdf -interaction=nonstopmode summary.tex
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: summary.tex
       - name: Build presentation.pdf
-        run: |
-          latexmk -pdf -interaction=nonstopmode presentation.tex
-      - name: Upload summary.pdf
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: presentation.tex
+      - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
-          name: summary-pdf
-          path: summary.pdf
-      - name: Upload presentation.pdf
-        uses: actions/upload-artifact@v4
-        with:
-          name: presentation-pdf
-          path: presentation.pdf
+            name: pdfs
+            path: |
+              summary.pdf
+              presentation.pdf
