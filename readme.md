@@ -34,7 +34,7 @@ When?
     Seminars in weeks 9, 10, start of 11. 
 
 
-## Contributers
+## Contributors
 
 The documents are in LaTeX. The summary report is called [summary.tex](summary.tex) and the presentation is called [presentation.tex](presentation.tex).
 
