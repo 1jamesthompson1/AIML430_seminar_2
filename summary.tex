@@ -79,11 +79,31 @@
 
 \section{Conclusion}
 
-% Summarise the main points
-% That we can use remote sensing for disaster response
-% That it can be great but there are still challenges
-% The current challenges that it face
-% Touch on future directions (like end to end disaster response, smaller models, more data sources etc)
+Across six complementary studies, remote sensing emerges as central to disaster response: it delivers fast situation awareness from satellites and drones, but impact is limited by observability, domain shift, and label constraints.
+
+Empirically, the papers span fires, floods, sea-ice hazards, and built-environment damage. In Heilongjiang, satellites track seasonal fire trends but miss many lightning ignitions because of clouds and revisit timing: lightning causes 77.6\% of fires, yet under 30\% of all fires are detected by VIIRS (Visible Infrared Imaging Radiometer Suite) and under 15\% of lightning fires, and the monitorable fraction falls as lightning’s share rises ($r=-0.888$, $p=0.003$). When satellites do see events they typically \emph{precede} ground reports by about 1--8 hours, showing real early-warning value. For building damage, a lightweight pseudo-siamese grid classifier reaches about 91\% accuracy in-domain and about 80\% out-of-domain, and remains usable on new crises (Providencia: 97.5\% accuracy, $F_1=0.851$) despite coarse labels. For flood response, YOLOv8 trained on generative synthetic imagery attains $\text{mAP}_{50}=0.967$, $\text{mAP}_{[0.5,0.95]}=0.787$, and $F_1=0.908$, while tests on real drone scenes reveal transfer brittleness that argues for standardized capture and curation. For wildfires, a ConvNeXt-Small hybrid (CNN+Transformer) delivers about 99.05\% test accuracy on satellite tiles. In polar waters, fusing RCM SAR with ViT features, simple statistics, and ERA5 winds enables four-way classification (open water, sea ice, and each “with iceberg”) at 96.5\% accuracy with roughly 1\% false alarms; collapsing to target vs.\ no-target yields 98.9\%. Finally, enhanced super-resolution GANs (ESRGAN) directly target small objects and minority classes, improving recall where post-disaster monitoring needs it most.
+
+\textbf{Current challenges.} Common issues recur across hazards and sensors:
+\begin{itemize}
+  \item \textit{Observability gaps:} cloud or smoke occlusion, night/illumination limits for optical, and revisit latency (e.g., May--July lightning fires in the Daxing’an Mountains).
+  \item \textit{Domain shift:} synthetic$\rightarrow$real, drone$\rightarrow$satellite, region$\rightarrow$region can erode field performance despite strong lab metrics.
+  \item \textit{Label scarcity and imbalance:} rare but critical classes (destroyed buildings, small icebergs, early fire pixels) and coarse/incomplete labels bias training and evaluation.
+  \item \textit{Sensor heterogeneity:} mixing optical, SAR, thermal, UAV, and reanalyses requires careful calibration, metadata discipline, and uncertainty handling.
+  \item \textit{Deployment constraints:} bandwidth, power, and the need for robust, on-edge inference under adverse weather and communications.
+\end{itemize}
+
+\textbf{Future directions.} The line of work across these papers points to end-to-end, field-robust pipelines:
+\begin{enumerate}
+  \item \textit{Task-to-action frameworks:} operationalize concepts like FloodIntel (tasking$\rightarrow$standardized capture$\rightarrow$multi-modal fusion$\rightarrow$prioritized dispatch) with auditable decisions and latency budgets.
+  \item \textit{Smaller, faster models at the edge:} distill/quantize strong backbones (ConvNeXt-S, YOLOv8n/s/m) for drones, field laptops, and small satellites, with calibrated uncertainty.
+  \item \textit{Richer fusion:} couple SAR+optical+thermal+UAV with environmental context (e.g., ERA5 winds) to separate look-alikes (open water vs.\ sea ice) and operate through clouds/smoke.
+  \item \textit{Label-efficient learning:} self-supervision, weak/active learning, and ESRGAN super-resolution to raise recall on minority classes with limited ground truth.
+  \item \textit{Data and protocol standardization:} define drone flight profiles, view angles, ground sampling distance, and annotation rubrics so synthetic and real images match at train and test time.
+  \item \textit{Fair, reliable evaluation:} report imbalance-aware metrics, out-of-domain tests, occlusion stress tests, and end-to-end latency, not only headline mAP or accuracy.
+\end{enumerate}
+
+In sum, remote sensing already yields earlier wildfire alerts, faster flood triage, and safer polar navigation. Realizing its full promise now hinges on standardizing data collection, hardening models against shift, boosting rare-class recall (via ESRGANs and active learning), and embedding compact, trustworthy predictors inside operational workflows for end-to-end disaster response.
+
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
