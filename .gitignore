@@ -1,1 +1,6 @@
 output/*
+
+summary.aux
+summary.log
+summary.pdf
+summary.synctex.gz

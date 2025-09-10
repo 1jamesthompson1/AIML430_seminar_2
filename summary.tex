@@ -13,6 +13,7 @@
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{bookmark}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{amssymb} 
@@ -66,16 +67,30 @@
 
 \section{Challenges of using remote sensing for disaster response}
 
-\subsection{Data availability}
 
-% Using super sampling to make low res data more useful (paper example)
-% Using genAI to make up synthetic data (paper example)
+\subsection{TECHNICAL \& DEPLOYMENT CHALLENGES}
+\subsubsection{Resource-Constrained Deployment \& Processing Speed}
+ML/DL models are computationally demanding, challenging to deploy in embedded devices, mobile phones, UAVs, small satellites, or low-resource platforms. Computational demands conflict with real-time disaster response needs, creating significant deployment barriers for edge computing scenarios where rapid response is critical.
 
-\subsubsection{Compute constraints}
+\subsubsection{Model Interpretability \& Trust Issues}
+DL models are often regarded as black boxes, providing little transparency into how decisions are made. This lack of interpretability poses challenges, particularly in post-disaster response and recovery scenarios where trust and accountability are critical.
+\subsubsection{Cross-Event Generalization \& Domain Gaps}
+Models often overfit to training datasets and fail to perform well on unseen disaster events or different geographical regions. Cross-event testing reveals significant performance degradation, with F1 scores dropping below 0.5 for some disaster types when tested on out-of-domain settings.
+\subsection{DATA ACQUISITION \& QUALITY CHALLENGES}
+\subsubsection{Cost, Accessibility \& Temporal Constraints}
+Very high-resolution satellite imagery is often expensive, difficult to acquire in real-time, or subject to operational delays, restricting precise and timely assessments. Large annotated datasets are expensive and time-consuming to acquire, creating barriers for developing robust models.
+\subsubsection{Atmospheric \& Environmental Limitations}
+Satellite imagery is significantly affected by environmental conditions during disasters, including cloud cover, smoke, noise, and atmospheric disturbances. Lightning-caused forest fires are particularly challenging, with 141 and 101 fires not detected by satellite due to thick clouds obscuring satellite views.
+\subsubsection{Dataset Quality \& Representation Issues}
+Severe class imbalance affects model generalization, with certain recovery states being underrepresented in datasets. This imbalance might skew model predictions, leading to biases where less frequent recovery patterns may be misclassified or overlooked entirely.
+\subsection{OPERATIONAL \& METHODOLOGICAL CHALLENGES}
+\subsubsection{Multi-temporal Analysis \& Recovery Discrimination}
+Tracking changes across multiple timeframes (pre/during/post-disaster) for comprehensive assessment requires sophisticated feature extraction techniques. Identifying and distinguishing between damage, ongoing recovery, and new construction over these time frames presents significant classification challenges.
+\subsubsection{Synthetic Data \& Training Limitations}
+Current synthetic image generation shows promise but faces limitations in realism compared to real-life scenarios and restrictions on generation volume from AI tools. Filtering requirements are critical to avoid unrealistic figures inappropriate for machine learning applications.
+\subsubsection{Long-term Monitoring \& System Integration Gaps}
+Current research bias toward immediate assessment neglects recovery phase monitoring and long-term resilience evaluation. System coordination challenges and performance validation gaps between synthetic training and real-world deployment result in operational delays and reduced effectiveness.
 
-% How it can be hard to run large models on limited hardware and bandwidth
-% Embedded processing due to bandwidth contraints from satellites (paper example)
-% Compute constraints on the ground and speed requirements (paper example)
 
 \section{Conclusion}
 
