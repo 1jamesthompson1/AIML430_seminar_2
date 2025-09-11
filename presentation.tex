@@ -69,10 +69,82 @@ AI systems that align with these principles can mitigate not amplify existing in
 
 }
 
-\namedframe{Person name}{Challenges}{
-
+% Slide 1,2,3: Technical & Deployment Challenges
+\namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
+\begin{itemize}
+    \item \textbf{1. Resource-Constrained Deployment and Real-Time Processing}
+    \begin{itemize}
+        \item Deep learning models require substantial computational resources, making deployment on UAVs and embedded systems challenging due to limited processing power, strict energy constraints, and restricted communication bandwidth (Elbohy et al., 2025)
+        \item Example: ConvNeXt achieved 99.05\% accuracy for wildfire detection but lacks practical deployment strategies for edge devices and integration with emergency alert systems
+        \item Critical trade-off: high-accuracy models often exceed hardware capabilities, forcing compromises between detection performance and operational feasibility
+    \end{itemize}
+\end{itemize}
 }
 
+\namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
+\begin{itemize}
+    \item \textbf{2. Model Interpretability and Trust Issues}
+    \begin{itemize}
+        \item DL models operate as "black boxes," providing no transparency into their decision-making process for critical damage assessments
+        \item Trust issues: Emergency responders hesitate to act on AI predictions when lives are at stake without understanding the reasoning
+        \item Explainability attempts fall short: Grad-CAM++ visualizations often highlight irrelevant regions rather than actual structural damage, failing to provide meaningful explanations (Lagap et al., 2025)
+    \end{itemize}
+\end{itemize}
+}
+
+
+\namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
+\begin{itemize}
+    \item \textbf{3. Cross-Event Generalization and Class Imbalance}
+    \begin{itemize}
+      \item Kim et al. (2022) investigated the application of computer vision techniques for water-related disaster damage assessment using satellite imagery
+      \item Performance drops: 85.9\% (in-domain) → 80.3\% (out-of-domain), indicating models struggle to generalize across different disaster contexts despite strong performance on familiar events
+      \item F1 scores fall below 0.5 for floods and tsunamis (Sunda Strait: 0.164, Midwestern Flooding: 0.495) primarily because submerged buildings become invisible in satellite imagery, causing systematic misclassification
+      \item Class imbalance: "New buildings" (180) vs "Not damaged" (625) samples creates strong prediction bias, while submerged structures are completely absent from training data
+    \end{itemize}
+\end{itemize}
+}
+
+
+% Slide 4: Data Acquisition & Quality Challenges
+\namedframe{Dwayne Acosta}{Data Acquisition \& Quality Challenges}{
+\begin{itemize}
+    \item \textbf{1. Cost, Accessibility \& Temporal Constraints}
+    \begin{itemize}
+        \item High-resolution satellite data: expensive, difficult to acquire in real-time, subject to operational delays
+        \item Temporal mismatch: Landsat/Sentinel have longer revisit cycles that fail timeliness requirements for disaster response
+        \item Data inequality: High-quality ground-truth concentrated in developed countries while disaster-prone developing nations lack resources for local damage data (Kim et al., 2022)
+    \end{itemize}
+    
+    \item \textbf{2. Atmospheric \& Environmental Limitations}
+    \begin{itemize}
+        \item VIIRS satellite detected only 14.8\% of 298 forest fires in Heilongjiang (2013-2020) due to cloud cover and transit timing (Jiao et al., 2023)
+        \item Floods coincide with heavy cloud cover that obstructs Landsat and MODIS optical sensors
+        \item Critical paradox: Disasters create the very conditions (smoke, debris, atmospheric disturbances) that compromise sensing capabilities when most needed
+    \end{itemize}
+\end{itemize}
+}
+
+
+
+% Slide 5: Operational & Methodological Challenges
+\namedframe{Dwayne Acosta}{Operational \& Methodological Challenges}{
+\begin{itemize}
+    \item \textbf{1. Multi-Temporal Analysis \& Recovery Discrimination}
+    \begin{itemize}
+        \item Must track structural changes across pre-disaster → event → post-disaster periods to distinguish damage vs recovery vs new construction
+        \item Models consistently misclassify partially damaged and recovered structures, unable to separate disaster damage from seasonal/urban changes
+        \item Vision Transformers can compare all three temporal frames but show inconsistent temporal reasoning across damage categories (Lagap et al., 2025)
+    \end{itemize}
+    
+    \item \textbf{2. Synthetic Data \& Training Limitations}
+    \begin{itemize}
+        \item Generated imagery achieves high metrics (96.7\% mAP50, 90.8\% F1) but suffers from cartoon-like artifacts requiring systematic filtering (Teoh et al., 2024)
+        \item Volume restrictions and prompt engineering challenges limit scalability of synthetic data generation
+        \item Cannot replicate complex physical disaster dynamics, environmental interactions, or temporal progression from pre to post-disaster
+    \end{itemize}
+\end{itemize}
+}
 \namedframe{Person name}{Conclusion}{
 
 }
