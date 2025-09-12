@@ -38,9 +38,46 @@
 
 }
 
-\namedframe{Person name}{Conclusion}{
-
+\namedframe{Amine}{Conclusion — Key takeaways}{
+\small
+\begin{itemize}
+  \item Remote sensing delivers fast situational awareness; main limits are observability, domain shift, and labels.
+  \item Satellites often \emph{precede} ground reports by 1–8h (early warning).
+  \item Compact models + ESRGAN improve recall for small/minority classes.
+\end{itemize}
 }
+
+\namedframe{Amine}{Conclusion — Highlights}{
+\small
+\begin{itemize}
+  \item Fires: Lightning 77.6\%; VIIRS $<$30\% all fires, $<$15\% lightning; monitorable share ↓ with lightning ($r=-0.888$, $p=0.003$).
+  \item Buildings: Pseudo-siamese grid $\sim$91\% in; $\sim$80\% OOD; Providencia 97.5\%, $F_1=0.851$.
+  \item Floods: YOLOv8 (synthetic) $\text{mAP}_{50}=0.967$, $\text{mAP}_{[0.5,0.95]}=0.787$, $F_1=0.908$; real-drone tests show brittleness.
+  \item Wildfires: ConvNeXt-S $\sim$99.05\% on satellite tiles.
+  \item Polar: RCM SAR+ViT+ERA5 → 96.5\% four-way; 98.9\% target vs no-target; $\sim$1\% false alarms.
+  \item Post-disaster: ESRGAN boosts recall on small/minority classes.
+\end{itemize}
+}
+
+\namedframe{Amine}{Conclusion — Challenges \& Next steps}{
+\small
+\textbf{Challenges:}
+\begin{itemize}
+  \item Observability gaps • Domain shift • Label scarcity/imbalance
+  \item Sensor heterogeneity • Deployment (bandwidth/power/edge)
+\end{itemize}
+\textbf{Next steps:}
+\begin{itemize}
+  \item Task$\to$action pipelines with latency budgets
+  \item Small, fast, calibrated edge models (ConvNeXt-S, YOLOv8n/s/m)
+  \item SAR+optical+thermal+UAV fusion with ERA5 context
+  \item Label-efficient learning (self/weak/active) + ESRGAN
+  \item Standardize data/protocols; fair OOD/occlusion/latency evals
+\end{itemize}
+\textbf{Bottom line:} earlier wildfire alerts, faster flood triage, safer polar navigation.
+}
+
+
 
 
 \end{document}
