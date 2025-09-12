@@ -52,42 +52,6 @@
 
 
 \section{IMPLICATION OF EFFECTIVE OR INEFFECTIVE DISASTER RESPONSE}
-Artificial intelligence has the potential to transform disaster response by accelerating decision-making, improving situational awareness, and optimizing resource allocation. However, the effectiveness of these systems is not solely technical it is deeply intertwined with social equity, data accessibility, and contextual relevance. The selected papers illustrate both the promise and the risks of AI-driven disaster management, especially when deployed in communities with limited infrastructure or socioeconomic vulnerability.
-\subsection{DISASTER ASSESSMENT USING COMPUTER VISION AND SATELLITE IMAGERY}
-\subsubsection{Effective response}
-Rapid quantification of structural damage enables targeted aid delivery to the most affected zones, reducing recovery time and minimizing resource waste.
-\subsubsection{Ineffective response}
-Misclassification or omission of damage—especially in informal settlements or low-visibility regions—can result in inequitable aid distribution, leaving vulnerable populations underserved.
-\subsection{EXPLORING GENERATIVE AI FOR YOLO-BASED OBJECT DETECTION}
-\subsubsection{Effective response}
-Generative augmentation addresses data scarcity, allowing object detection models to generalize across novel disaster zones and support real-time situational awareness.
-\subsubsection{Ineffective response}
-Over-reliance on synthetic data without validation may produce brittle models that fail in diverse real-world contexts, particularly in regions lacking annotated datasets.
-\subsection{FUSION OF CNN AND TRANSFORMER ARCHITECTURES FOR PROACTIVE WILDFIRE DETECTION}
-\subsubsection{Effective response}
-Hybrid ConvNeXt-Transformer models enable early wildfire detection, facilitating timely evacuations and reducing environmental and human impact.
-\subsubsection{Ineffective response}
-Delayed alerts due to poor integration or regional blind spots can allow fires to escalate before responders mobilize, especially in remote or underserved areas.
-\subsection{ENHANCING POST-DISASTER DAMAGE DETECTION WITH ESRGAN}
-\subsubsection{Effective response}
-Super-resolution and explainability tools (e.g., Grad-CAM++) enhance technical accuracy and build trust among decision-makers, supporting both immediate response and long-term recovery.
-\subsubsection{Ineffective response}
-Neglecting image quality and interpretability risks biased assessments, particularly in low-income regions where infrastructure may be harder to detect or classify.
-\subsection{FOREST FIRE PATTERNS AND LIGHTNING-CAUSED DETECTION IN CHINA}
-\subsubsection{Effective response}
-Regional pattern analysis ensures models are trained with ecological and geographic awareness, improving accuracy and cultural relevance in intervention strategies.
-\subsubsection{Ineffective response}
-Generic models that ignore local data may misrepresent fire regimes, leading to interventions that are misaligned with actual community needs.
-\subsection{SYNTHESIS}
-Together, these studies reveal that effective disaster response systems must go beyond technical precision. They must be:
-\begin{itemize}
-    \item \textbf{Timely} — enabling early detection and rapid mobilization.
-    \item \textbf{Accurate} — leveraging augmentation, super-resolution, and hybrid architectures.
-    \item \textbf{Trustworthy} — incorporating explainability and stakeholder confidence.
-    \item \textbf{Context-aware} — integrating socioeconomic and regional data.
-    \item \textbf{Equity-driven} — ensuring vulnerable populations are not excluded due to data gaps.
-\end{itemize}
-AI systems that align with these principles can mitigate not amplify existing inequalities. Conversely, systems that ignore socioeconomic context risk turning technological interventions into liabilities, reinforcing disparities in aid, recovery, and resilience.
 
 
 \section{Application of remote sensing in disaster response}
@@ -131,31 +95,6 @@ Synthetic imagery has been explored to address data scarcity, class imbalance, a
 
 
 \section{Conclusion}
-
-Across six complementary studies, remote sensing emerges as central to disaster response: it delivers fast situation awareness from satellites and drones, but impact is limited by observability, domain shift, and label constraints.
-
-Empirically, the papers span fires, floods, sea-ice hazards, and built-environment damage. In Heilongjiang, satellites track seasonal fire trends but miss many lightning ignitions because of clouds and revisit timing: lightning causes 77.6\% of fires, yet under 30\% of all fires are detected by VIIRS (Visible Infrared Imaging Radiometer Suite) and under 15\% of lightning fires, and the monitorable fraction falls as lightning’s share rises ($r=-0.888$, $p=0.003$). When satellites do see events they typically \emph{precede} ground reports by about 1--8 hours, showing real early-warning value. For building damage, a lightweight pseudo-siamese grid classifier reaches about 91\% accuracy in-domain and about 80\% out-of-domain, and remains usable on new crises (Providencia: 97.5\% accuracy, $F_1=0.851$) despite coarse labels. For flood response, YOLOv8 trained on generative synthetic imagery attains $\text{mAP}_{50}=0.967$, $\text{mAP}_{[0.5,0.95]}=0.787$, and $F_1=0.908$, while tests on real drone scenes reveal transfer brittleness that argues for standardized capture and curation. For wildfires, a ConvNeXt-Small hybrid (CNN+Transformer) delivers about 99.05\% test accuracy on satellite tiles. In polar waters, fusing RCM SAR with ViT features, simple statistics, and ERA5 winds enables four-way classification (open water, sea ice, and each “with iceberg”) at 96.5\% accuracy with roughly 1\% false alarms; collapsing to target vs.\ no-target yields 98.9\%. Finally, enhanced super-resolution GANs (ESRGAN) directly target small objects and minority classes, improving recall where post-disaster monitoring needs it most.
-
-\textbf{Current challenges.} Common issues recur across hazards and sensors:
-\begin{itemize}
-  \item \textit{Observability gaps:} cloud or smoke occlusion, night/illumination limits for optical, and revisit latency (e.g., May--July lightning fires in the Daxing’an Mountains).
-  \item \textit{Domain shift:} synthetic$\rightarrow$real, drone$\rightarrow$satellite, region$\rightarrow$region can erode field performance despite strong lab metrics.
-  \item \textit{Label scarcity and imbalance:} rare but critical classes (destroyed buildings, small icebergs, early fire pixels) and coarse/incomplete labels bias training and evaluation.
-  \item \textit{Sensor heterogeneity:} mixing optical, SAR, thermal, UAV, and reanalyses requires careful calibration, metadata discipline, and uncertainty handling.
-  \item \textit{Deployment constraints:} bandwidth, power, and the need for robust, on-edge inference under adverse weather and communications.
-\end{itemize}
-
-\textbf{Future directions.} The line of work across these papers points to end-to-end, field-robust pipelines:
-\begin{enumerate}
-  \item \textit{Task-to-action frameworks:} operationalize concepts like FloodIntel (tasking$\rightarrow$standardized capture$\rightarrow$multi-modal fusion$\rightarrow$prioritized dispatch) with auditable decisions and latency budgets.
-  \item \textit{Smaller, faster models at the edge:} distill/quantize strong backbones (ConvNeXt-S, YOLOv8n/s/m) for drones, field laptops, and small satellites, with calibrated uncertainty.
-  \item \textit{Richer fusion:} couple SAR+optical+thermal+UAV with environmental context (e.g., ERA5 winds) to separate look-alikes (open water vs.\ sea ice) and operate through clouds/smoke.
-  \item \textit{Label-efficient learning:} self-supervision, weak/active learning, and ESRGAN super-resolution to raise recall on minority classes with limited ground truth.
-  \item \textit{Data and protocol standardization:} define drone flight profiles, view angles, ground sampling distance, and annotation rubrics so synthetic and real images match at train and test time.
-  \item \textit{Fair, reliable evaluation:} report imbalance-aware metrics, out-of-domain tests, occlusion stress tests, and end-to-end latency, not only headline mAP or accuracy.
-\end{enumerate}
-
-In sum, remote sensing already yields earlier wildfire alerts, faster flood triage, and safer polar navigation. Realizing its full promise now hinges on standardizing data collection, hardening models against shift, boosting rare-class recall (via ESRGANs and active learning), and embedding compact, trustworthy predictors inside operational workflows for end-to-end disaster response.
 
 
 \bibliographystyle{IEEEtran}
