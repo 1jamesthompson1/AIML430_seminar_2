@@ -66,6 +66,35 @@ We will look at how important it is to have effective disaster response and the 
 % How we can use it for fire detection (2 paper examples)
 % How we can use it for more general disaster detection (1 paper example)
 
+AI techniques excel at finding complex non linear patterns in data which is otherwise differentiable from noise to humans or other pattern recognition tooling. It is not a huge surprise that AI then is capable of excelling at finding complex patterns in a huge variety of data leading to massive improvements over the previous state of art in a variety of areas (such as classification of risky icebergs in shipping routes).
+
+\textbf{Example 1- Wildfires}
+
+Wildfire detection is an example of disaster detection where AI has been used since the 1990s. The authors of the paper begin with a review of ways various types of remote sensing data have led to improvements in rapid response systems. 
+
+Over time, researchers have explored increasingly more complex data signal sources- from one dimensional inputs such as thermometers, to using increasingly higher resolution satellite cloud data, to complex sensing tools which have high dimensional outputs (which can be helpful where, for example, clouds might block the forests from view of the satellite imagery). This issue of cloud cover blocking data is quite a big problem for systems entirely reliant on computer vision techniques. 
+
+\textbf{"Matching VIIRS forest fire location data with historical ground forest fire data shows that less than 30\% of forest fires were detected by satellite, and lightning strikes account for less than 15\% of forest fires."}
+(Chinese mountain paper)
+
+This shows a common theme in AI in general- that the quality of output system is dependent both on having high quality data, and also  designing systems to fully take advantage of the data that you do have. With this in mind, the paper sets out the goal of combining the strengths of computer vision techniques and transformer inspired mechanisms for more comprehensive analysis of wildfire patterns in a ConvNeXt-based architecture. System values extracting a lot of meaning from less data to build more scalable systems.
+
+\textbf{Algorithm design}
+"To reduce computational complexity while effectively capturing both spatial and channel-wise features, depthwise separable convolutions are utilized. Instead of Batch Normalization, Layer Normalization is applied, providing greater stability during training, especially with large datasets. The GELU activation function is employed to improve gradient flow and introduce better non-linearity, resulting in richer feature representations. Furthermore, the use of larger kernel sizes enables improved context aggregation, emulating the global receptive field characteristic of transformers."
+
+
+
+\textbf{Example 2- Iceberg classification}
+
+A more commercially focused project was using AI for detecting icebergs in Northern shipping routes. Traditional classifiers have been built on relying on principles which may not be true in all cases (such as icebergs that exhibit higher backscatter than the surrounding water). 
+
+Due to the enormous range of weather, lighting, sea,  and the physical conditions of the icebergs themselves, it has proven to be an enormously complex task to create a robust classifier for this. Conversely, such a system would be enormously valuable to the shipping industry, and therefore they are strongly motivated to invest in improving the technology.
+
+Another note about about this is the example is the complexity of getting good data to begin with. In the one year study, only 102 images in the required format were able to be collected which then all required extensive analysis by GIS specialists and then confirmed with rigorous cross referencing with other data sources. The paper uses this human labeled data to build a CNN model, which performs well compared to the limitations of previous techniques.
+
+
+
+
 \section{Challenges of using remote sensing for disaster response}
 
 \subsection{Data availability}
