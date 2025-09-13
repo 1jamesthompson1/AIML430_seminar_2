@@ -238,9 +238,48 @@ AI systems that align with these principles can mitigate not amplify existing in
     \end{itemize}
 \end{itemize}
 }
-\namedframe{Person name}{Conclusion}{
 
+\namedframe{Amine}{Conclusion — Essentials \& highlights}{
+\footnotesize
+\begin{itemize}
+  \item Remote sensing is central for rapid situational awareness; satellites often \emph{lead} ground reports by 1–8h.
+  \item Main limits: observability (clouds/smoke/revisit), domain shift, label scarcity/imbalance.
+  \item Fires: Lightning 77.6\%; VIIRS $<$30\% all/$<$15\% lightning; monitorable share $\downarrow$ with lightning ($r=-0.888$, $p=0.003$).
+  \item Buildings: Pseudo-siamese grid $\sim$91\% in / $\sim$80\% OOD; Providencia 97.5\%, $F_1=0.851$.
+  \item Floods/Wildfire/Polar/ESRGAN: YOLOv8 (synthetic) $\mathrm{mAP}_{50}=0.967$, $\mathrm{mAP}_{[0.5,0.95]}=0.787$, $F_1=0.908$ (field brittleness); ConvNeXt-S $\sim$99.05\%; RCM SAR+ViT+ERA5 $\rightarrow$ 96.5\% 4-way, 98.9\% target/no-target, $\sim$1\% false alarms; ESRGAN lifts small/minority-class recall.
+\end{itemize}
 }
+
+\namedframe{Amine}{Implications — Practice \& equity}{
+\footnotesize
+\begin{itemize}
+  \item \textbf{Effective:} earlier wildfire alerts, faster flood triage, safer polar routing $\Rightarrow$ shorter time-to-aid \& less waste.
+  \item \textbf{Ineffective:} synthetic$\to$real brittleness \& blind spots (clouds/informal settlements) $\Rightarrow$ inequitable aid/misallocation.
+  \item \textbf{Principles:} \emph{Timely • Accurate • Trustworthy/Transparent • Context-aware • Equity-driven}.
+  \item \textbf{Tactics:} uncertainty thresholds + explainability (e.g., Grad-CAM++); local ecological/socioeconomic priors; standardized capture/annotation.
+\end{itemize}
+}
+
+\namedframe{Amine}{Conclusion — Challenges \& Next steps}{
+\footnotesize
+\textbf{Challenges:}
+\begin{itemize}
+  \item \textit{Technical \& deployment:} edge compute/power/bandwidth; calibrated uncertainty \& interpretability.
+  \item \textit{Data acquisition \& quality:} cost/access/latency; clouds/smoke occlusion; scarce/imbalanced labels.
+  \item \textit{Operational \& methodological:} cross-event/region generalization; multi-temporal reasoning; synthetic$\leftrightarrow$real gap.
+\end{itemize}
+\textbf{Next steps:}
+\begin{itemize}
+  \item Task$\to$action pipelines with auditable decisions \& latency budgets.
+  \item Distill/quantize (ConvNeXt-S, YOLOv8n/s/m) for robust edge deployment.
+  \item SAR+optical+thermal+UAV fusion with ERA5 context to operate through clouds/smoke.
+  \item Label-efficient learning + ESRGAN to lift minority-class recall.
+  \item Standardized capture/annotations; fair evals (OOD, occlusion stress, latency \& uncertainty).
+\end{itemize}
+}
+
+
+
 
 
 \end{document}
