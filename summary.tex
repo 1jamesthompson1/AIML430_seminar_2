@@ -53,42 +53,40 @@ When disasters strike a rapid and effective response is critical to mitigate the
 We will look at how important it is to have effective disaster response and the what can happen as AI is used in the disaster response process. Then we will discuss different applications of AI and remote sensing for disaster response. Specifically the applications of classifying damaged buildings \cite{kimDisasterAssessmentUsing2022,teohExploringGenerativeAI2024,lagapEnhancingPostDisasterDamage2025} and detecting wildfires \cite{elbohy2025fusion,jiaoForestFirePatterns2023}. Lastly we will discuss the challenges of using AI for disaster response and some attempts or methods to overcome these challenges. The challenges mainly fall into two categories data availability and compute constraints.
 
 
-\section{IMPLICATION OF EFFECTIVE OR INEFFECTIVE DISASTER RESPONSE}
-Artificial intelligence has the potential to transform disaster response by accelerating decision-making, improving situational awareness, and optimizing resource allocation. However, the effectiveness of these systems is not solely technical it is deeply intertwined with social equity, data accessibility, and contextual relevance. The selected papers illustrate both the promise and the risks of AI-driven disaster management, especially when deployed in communities with limited infrastructure or socioeconomic vulnerability.
-\subsection{DISASTER ASSESSMENT USING COMPUTER VISION AND SATELLITE IMAGERY}
-\subsubsection{Effective response}
-Rapid quantification of structural damage enables targeted aid delivery to the most affected zones, reducing recovery time and minimizing resource waste.
-\subsubsection{Ineffective response}
-Misclassification or omission of damage—especially in informal settlements or low-visibility regions—can result in inequitable aid distribution, leaving vulnerable populations underserved.
-\subsection{EXPLORING GENERATIVE AI FOR YOLO-BASED OBJECT DETECTION}
-\subsubsection{Effective response}
-Generative augmentation addresses data scarcity, allowing object detection models to generalize across novel disaster zones and support real-time situational awareness.
-\subsubsection{Ineffective response}
-Over-reliance on synthetic data without validation may produce brittle models that fail in diverse real-world contexts, particularly in regions lacking annotated datasets.
-\subsection{FUSION OF CNN AND TRANSFORMER ARCHITECTURES FOR PROACTIVE WILDFIRE DETECTION}
-\subsubsection{Effective response}
-Hybrid ConvNeXt-Transformer models enable early wildfire detection, facilitating timely evacuations and reducing environmental and human impact.
-\subsubsection{Ineffective response}
-Delayed alerts due to poor integration or regional blind spots can allow fires to escalate before responders mobilize, especially in remote or underserved areas.
-\subsection{[ENHANCING POST-DISASTER DAMAGE DETECTION WITH ESRGAN}
-\subsubsection{Effective response}
-Super-resolution and explainability tools (e.g., Grad-CAM++) enhance technical accuracy and build trust among decision-makers, supporting both immediate response and long-term recovery.
-\subsubsection{Ineffective response}
-Neglecting image quality and interpretability risks biased assessments, particularly in low-income regions where infrastructure may be harder to detect or classify.
-\subsection{FOREST FIRE PATTERNS AND LIGHTNING-CAUSED DETECTION IN CHINA}
-\subsubsection{Effective response}
-Regional pattern analysis ensures models are trained with ecological and geographic awareness, improving accuracy and cultural relevance in intervention strategies.
-\subsubsection{Ineffective response}
-Generic models that ignore local data may misrepresent fire regimes, leading to interventions that are misaligned with actual community needs.
-\subsection{SYNTHESIS}
+
+\section{Implications of Effective or Ineffective Disaster Response}
+
+Artificial intelligence has the potential to transform disaster response by accelerating decision-making, improving situational awareness, and optimizing resource allocation. However, the effectiveness of these systems is not solely technical; it is deeply intertwined with social equity, data accessibility, and contextual relevance. The selected papers illustrate both the promise and the risks of AI-driven disaster management, especially when deployed in communities with limited infrastructure or socioeconomic vulnerability.
+
+\subsection{Critical Findings by Study}
+
+\textbf{Disaster Assessment using Computer Vision and Satellite Imagery:}
+An effective AI system can rapidly quantify structural damage, enabling targeted aid delivery to the most affected zones, which reduces recovery time and minimizes resource waste. Conversely, an ineffective system risks misclassifying or omitting damage especially in informal settlements which can result in inequitable aid distribution and leave vulnerable populations underserved.
+
+\textbf{Exploring Generative AI for YOLO-Based Object Detection:}
+The use of generative AI for data augmentation can effectively address data scarcity, allowing models to generalize across novel disaster zones and support real-time situational awareness. However, an over-reliance on unvalidated synthetic data may produce brittle models that fail in diverse real-world contexts, particularly in regions that lack local annotated datasets for validation.
+
+\textbf{Fusion of CNN and Transformer Architectures for Proactive Wildfire Detection:}
+A hybrid ConvNeXt-Transformer model can enable early wildfire detection, facilitating timely evacuations and reducing environmental and human impact. Ineffectiveness arises from delayed alerts due to poor system integration or regional blind spots, which can allow fires to escalate uncontrollably before responders can mobilize, especially in remote areas.
+
+\textbf{Enhancing Post-Disaster Damage Detection with ESRGAN:}
+Effective systems use super-resolution and explainability tools like Grad-CAM++ to enhance technical accuracy and build trust among decision-makers, supporting both immediate response and long-term recovery. If image quality and interpretability are neglected, the risk of biased assessments increases, particularly in low-income regions where infrastructure is harder to detect.
+
+\textbf{Forest Fire Patterns and Lightning-Caused Detection in China:}
+An effective, context-aware approach uses regional pattern analysis to train models with ecological and geographic awareness, improving accuracy and cultural relevance. A ineffective, generic model that ignores local data may misrepresent fire regimes, leading to interventions that are misaligned with actual community needs and worsening outcomes.
+
+\subsection{Synthesis}
+
 Together, these studies reveal that effective disaster response systems must go beyond technical precision. They must be:
+
 \begin{itemize}
-    \item \textbf{Timely} — enabling early detection and rapid mobilization.
-    \item \textbf{Accurate} — leveraging augmentation, super-resolution, and hybrid architectures.
-    \item \textbf{Trustworthy} — incorporating explainability and stakeholder confidence.
-    \item \textbf{Context-aware} — integrating socioeconomic and regional data.
-    \item \textbf{Equity-driven} — ensuring vulnerable populations are not excluded due to data gaps.
+    \item \textbf{Timely} enabling early detection and rapid mobilization.
+    \item \textbf{Accurate} leveraging augmentation, super-resolution, and hybrid architectures.
+    \item \textbf{Trustworthy} incorporating explainability and stakeholder confidence.
+    \item \textbf{Context-aware} integrating socioeconomic and regional data.
+    \item \textbf{Equity-driven} ensuring vulnerable populations are not excluded due to data gaps.
 \end{itemize}
+
 AI systems that align with these principles can mitigate not amplify existing inequalities. Conversely, systems that ignore socioeconomic context risk turning technological interventions into liabilities, reinforcing disparities in aid, recovery, and resilience.
 
 
