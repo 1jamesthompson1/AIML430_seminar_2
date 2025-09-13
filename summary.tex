@@ -85,19 +85,19 @@ Empirically, the papers span fires, floods, sea-ice hazards, and built-environme
 \paragraph{Implications for practice and equity.}
 The studies collectively show that \emph{effective} AI-enabled sensing accelerates triage and targeting (e.g., earlier wildfire alerts, faster flood asset detection, more reliable polar navigation), which shortens time-to-aid and reduces waste. Conversely, \emph{ineffective} deployment---from brittle synthetic-to-real transfer to blind spots over informal settlements or cloud-obscured regions---can misallocate resources and systematically underserve vulnerable communities. Thus, operational systems must be \textbf{timely}, \textbf{accurate}, \textbf{trustworthy/transparent}, \textbf{context-aware}, and \textbf{equity-driven}: e.g., combining super-resolution and augmentation to raise recall on small/rare classes; using explainability (Grad-CAM++/uncertainty) to build stakeholder confidence; and grounding models in local ecological and socioeconomic patterns so decisions remain culturally and regionally appropriate.
 
-\paragraph{Current challenges (realigned to sections).}
+\paragraph{Current challenges .}
 \textit{Technical \& deployment:} (i) resource-constrained, on-edge inference for UAVs/field kits; (ii) interpretability and calibrated uncertainty for accountable decisions; (iii) robust operation under bandwidth/power limits and adverse comms.\\
 \textit{Data acquisition \& quality:} (i) cost/access and latency of high-resolution imagery; (ii) atmospheric/occlusion limits (cloud, smoke) that suppress detection rates (e.g., low VIIRS visibility for lightning fires); (iii) label scarcity/imbalance, especially for minority yet critical classes.\\
 \textit{Operational \& methodological:} (i) cross-event/region generalization gaps (OOD drops despite strong lab metrics); (ii) multi-temporal reasoning to separate damage vs.\ recovery/new build; (iii) benefits and pitfalls of synthetic data (high mAP in lab, brittleness in field without standardized capture and curation).
 
-\paragraph{Future directions (targeted to the above).}
+\paragraph{Future directions .}
 \begin{enumerate}
-  \item \textit{Task-to-action frameworks (Operational):} operationalize concepts like FloodIntel (tasking$\rightarrow$standardized capture$\rightarrow$multi-modal fusion$\rightarrow$prioritized dispatch) with auditable decisions and latency budgets.
-  \item \textit{Smaller, faster models at the edge (Technical):} distill/quantize strong backbones (ConvNeXt-S, YOLOv8n/s/m) for drones, field laptops, and small satellites, with calibrated uncertainty and fail-safes.
-  \item \textit{Richer fusion (Data/Technical):} couple SAR+optical+thermal+UAV with environmental context (e.g., ERA5 winds) to operate through clouds/smoke and separate look-alikes (e.g., open water vs.\ sea ice).
-  \item \textit{Label-efficient learning (Operational/Data):} self-supervision, weak/active learning, and ESRGAN super-resolution to raise recall on minority classes with limited ground truth.
-  \item \textit{Data \& protocol standardization (Data/Operational):} define drone flight profiles, view angles, GSD, and annotation rubrics so synthetic and real images match at train and test time.
-  \item \textit{Fair, reliable evaluation (Operational):} report imbalance-aware metrics, OOD tests, occlusion stress tests, uncertainty calibration, and end-to-end latency, not only headline mAP or accuracy.
+  \item \textit{Task-to-action frameworks :} operationalize concepts like FloodIntel (tasking$\rightarrow$standardized capture$\rightarrow$multi-modal fusion$\rightarrow$prioritized dispatch) with auditable decisions and latency budgets.
+  \item \textit{Smaller, faster models at the edge :} distill/quantize strong backbones (ConvNeXt-S, YOLOv8n/s/m) for drones, field laptops, and small satellites, with calibrated uncertainty and fail-safes.
+  \item \textit{Richer fusion :} couple SAR+optical+thermal+UAV with environmental context (e.g., ERA5 winds) to operate through clouds/smoke and separate look-alikes (e.g., open water vs.\ sea ice).
+  \item \textit{Label-efficient learning :} self-supervision, weak/active learning, and ESRGAN super-resolution to raise recall on minority classes with limited ground truth.
+  \item \textit{Data \& protocol standardization :} define drone flight profiles, view angles, GSD, and annotation rubrics so synthetic and real images match at train and test time.
+  \item \textit{Fair, reliable evaluation :} report imbalance-aware metrics, OOD tests, occlusion stress tests, uncertainty calibration, and end-to-end latency, not only headline mAP or accuracy.
 \end{enumerate}
 
 In sum, remote sensing already yields earlier wildfire alerts, faster flood triage, and safer polar navigation. Realizing its full promise now hinges on (i) standardizing data collection to reduce domain gaps, (ii) hardening models against shift with uncertainty-aware, multi-modal fusion, (iii) boosting rare-class recall (via ESRGANs and active/weak supervision), and (iv) embedding compact, trustworthy predictors inside equitable, auditable workflows---so that AI \emph{mitigates}, rather than amplifies, existing disparities in aid, recovery, and resilience.
