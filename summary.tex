@@ -13,6 +13,7 @@
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{bookmark}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{amssymb} 
@@ -47,15 +48,49 @@
 %% tell some statistics about how disaster are bad and increasing (the papers have lots of references)
 %% more or less show that there is a great opportunity and need for better disaster response
 
-\cite{elbohy2025fusion} etc...
+When disasters strike a rapid and effective response is critical to mitigate their impact on affect communities . Understanding the disaster is essential for coordinating an effective response. Most methods of understanding a disaster rely on ground based data collection which can be slow, dangerous and limited in scope \cite{nhess-21-1431-2021}. Remote sensing is the process of collecting data from a distance, often using satellites or aircraft. A challenge of using remote sensing is that the scale of data is that manual processing is too expensive and slow. By using AI to analyze remote sensing data we can automate the process of extracting useful information from the data. This paper will review the current state of the art in using AI for disaster detection and response.
+
+We will look at how important it is to have effective disaster response and the what can happen as AI is used in the disaster response process. Then we will discuss different applications of AI and remote sensing for disaster response. Specifically the applications of classifying damaged buildings \cite{kimDisasterAssessmentUsing2022,teohExploringGenerativeAI2024,lagapEnhancingPostDisasterDamage2025} and detecting wildfires \cite{elbohy2025fusion,jiaoForestFirePatterns2023}. Lastly we will discuss the challenges of using AI for disaster response and some attempts or methods to overcome these challenges. The challenges mainly fall into two categories data availability and compute constraints.
 
 
-\section{Implication of effective or ineffective disaster response}
+\section{IMPLICATION OF EFFECTIVE OR INEFFECTIVE DISASTER RESPONSE}
+Artificial intelligence has the potential to transform disaster response by accelerating decision-making, improving situational awareness, and optimizing resource allocation. However, the effectiveness of these systems is not solely technical it is deeply intertwined with social equity, data accessibility, and contextual relevance. The selected papers illustrate both the promise and the risks of AI-driven disaster management, especially when deployed in communities with limited infrastructure or socioeconomic vulnerability.
+\subsection{DISASTER ASSESSMENT USING COMPUTER VISION AND SATELLITE IMAGERY}
+\subsubsection{Effective response}
+Rapid quantification of structural damage enables targeted aid delivery to the most affected zones, reducing recovery time and minimizing resource waste.
+\subsubsection{Ineffective response}
+Misclassification or omission of damage—especially in informal settlements or low-visibility regions—can result in inequitable aid distribution, leaving vulnerable populations underserved.
+\subsection{EXPLORING GENERATIVE AI FOR YOLO-BASED OBJECT DETECTION}
+\subsubsection{Effective response}
+Generative augmentation addresses data scarcity, allowing object detection models to generalize across novel disaster zones and support real-time situational awareness.
+\subsubsection{Ineffective response}
+Over-reliance on synthetic data without validation may produce brittle models that fail in diverse real-world contexts, particularly in regions lacking annotated datasets.
+\subsection{FUSION OF CNN AND TRANSFORMER ARCHITECTURES FOR PROACTIVE WILDFIRE DETECTION}
+\subsubsection{Effective response}
+Hybrid ConvNeXt-Transformer models enable early wildfire detection, facilitating timely evacuations and reducing environmental and human impact.
+\subsubsection{Ineffective response}
+Delayed alerts due to poor integration or regional blind spots can allow fires to escalate before responders mobilize, especially in remote or underserved areas.
+\subsection{[ENHANCING POST-DISASTER DAMAGE DETECTION WITH ESRGAN}
+\subsubsection{Effective response}
+Super-resolution and explainability tools (e.g., Grad-CAM++) enhance technical accuracy and build trust among decision-makers, supporting both immediate response and long-term recovery.
+\subsubsection{Ineffective response}
+Neglecting image quality and interpretability risks biased assessments, particularly in low-income regions where infrastructure may be harder to detect or classify.
+\subsection{FOREST FIRE PATTERNS AND LIGHTNING-CAUSED DETECTION IN CHINA}
+\subsubsection{Effective response}
+Regional pattern analysis ensures models are trained with ecological and geographic awareness, improving accuracy and cultural relevance in intervention strategies.
+\subsubsection{Ineffective response}
+Generic models that ignore local data may misrepresent fire regimes, leading to interventions that are misaligned with actual community needs.
+\subsection{SYNTHESIS}
+Together, these studies reveal that effective disaster response systems must go beyond technical precision. They must be:
+\begin{itemize}
+    \item \textbf{Timely} — enabling early detection and rapid mobilization.
+    \item \textbf{Accurate} — leveraging augmentation, super-resolution, and hybrid architectures.
+    \item \textbf{Trustworthy} — incorporating explainability and stakeholder confidence.
+    \item \textbf{Context-aware} — integrating socioeconomic and regional data.
+    \item \textbf{Equity-driven} — ensuring vulnerable populations are not excluded due to data gaps.
+\end{itemize}
+AI systems that align with these principles can mitigate not amplify existing inequalities. Conversely, systems that ignore socioeconomic context risk turning technological interventions into liabilities, reinforcing disparities in aid, recovery, and resilience.
 
-% Disaster disproportionately effect the poor and economically vulnerable
-% Can amplify existing inequalities in communities that don't have survellance or data collection. Or help mitagte it due to easier data collection
-% Talking about how it could include socioeconomic data into the disaster response information (paper example)
-% (paper example) from all of the introductions and discussion sections.
 
 \section{Application of remote sensing in disaster response}
 
@@ -64,18 +99,66 @@
 % How we can use it for fire detection (2 paper examples)
 % How we can use it for more general disaster detection (1 paper example)
 
+AI techniques excel at finding complex non linear patterns in data which is otherwise differentiable from noise to humans or other pattern recognition tooling. It is not a huge surprise that AI then is capable of excelling at finding complex patterns in a huge variety of data leading to massive improvements over the previous state of art in a variety of areas (such as classification of risky icebergs in shipping routes).
+
+\textbf{Example 1- Wildfires}
+
+Wildfire detection is an example of disaster detection where AI has been used since the 1990s. The authors of the paper begin with a review of ways various types of remote sensing data have led to improvements in rapid response systems. 
+
+Over time, researchers have explored increasingly more complex data signal sources- from one dimensional inputs such as thermometers, to using increasingly higher resolution satellite cloud data, to complex sensing tools which have high dimensional outputs (which can be helpful where, for example, clouds might block the forests from view of the satellite imagery). This issue of cloud cover blocking data is quite a big problem for systems entirely reliant on computer vision techniques. 
+
+\textbf{"Matching VIIRS forest fire location data with historical ground forest fire data shows that less than 30\% of forest fires were detected by satellite, and lightning strikes account for less than 15\% of forest fires."}
+(Chinese mountain paper)
+
+This shows a common theme in AI in general- that the quality of output system is dependent both on having high quality data, and also  designing systems to fully take advantage of the data that you do have. With this in mind, the paper sets out the goal of combining the strengths of computer vision techniques and transformer inspired mechanisms for more comprehensive analysis of wildfire patterns in a ConvNeXt-based architecture. System values extracting a lot of meaning from less data to build more scalable systems.
+
+\textbf{Algorithm design}
+"To reduce computational complexity while effectively capturing both spatial and channel-wise features, depthwise separable convolutions are utilized. Instead of Batch Normalization, Layer Normalization is applied, providing greater stability during training, especially with large datasets. The GELU activation function is employed to improve gradient flow and introduce better non-linearity, resulting in richer feature representations. Furthermore, the use of larger kernel sizes enables improved context aggregation, emulating the global receptive field characteristic of transformers."
+
+
+
+\textbf{Example 2- Iceberg classification}
+
+A more commercially focused project was using AI for detecting icebergs in Northern shipping routes. Traditional classifiers have been built on relying on principles which may not be true in all cases (such as icebergs that exhibit higher backscatter than the surrounding water). 
+
+Due to the enormous range of weather, lighting, sea,  and the physical conditions of the icebergs themselves, it has proven to be an enormously complex task to create a robust classifier for this. Conversely, such a system would be enormously valuable to the shipping industry, and therefore they are strongly motivated to invest in improving the technology.
+
+Another note about about this is the example is the complexity of getting good data to begin with. In the one year study, only 102 images in the required format were able to be collected which then all required extensive analysis by GIS specialists and then confirmed with rigorous cross referencing with other data sources. The paper uses this human labeled data to build a CNN model, which performs well compared to the limitations of previous techniques.
+
+
+
+
 \section{Challenges of using remote sensing for disaster response}
 
-\subsection{Data availability}
 
-% Using super sampling to make low res data more useful (paper example)
-% Using genAI to make up synthetic data (paper example)
+\subsection{TECHNICAL \& DEPLOYMENT CHALLENGES}
 
-\subsubsection{Compute constraints}
+\subsubsection{\textbf{Resource-constrained deployment \& real-time processing}}
+A major challenge for remote sensing in disaster response is the difficulty of meeting the computational demands of modern machine learning and deep learning models required for real-time processing during critical response phases. While these models often deliver higher performance than lightweight alternatives, deploying them on embedded devices, mobile systems, or Unmanned Aerial Vehicles (UAVs) is hindered by limited processing power, strict energy requirements, and constrained communication bandwidth \cite{elbohy2025fusion}. For instance, flood forecasting systems using Convolutional Neural Networks (CNN) + Modified Particle Swarm Optimization demonstrate high performance but are highly complex and expensive in real-time systems. While CNN-based models like ConvNeXt-Small show promise for wildfire detection, achieving 99.05\% test accuracy, they still lack practical deployment strategies for real-world alert systems \cite{elbohy2025fusion}. This results in a constant trade-off between achieving high model accuracy and ensuring feasible deployment in post-disaster events.
 
-% How it can be hard to run large models on limited hardware and bandwidth
-% Embedded processing due to bandwidth contraints from satellites (paper example)
-% Compute constraints on the ground and speed requirements (paper example)
+\subsubsection{\textbf{Model interpretability \& trust issues}}
+Deep learning models are frequently criticized as ``black boxes,'' offering limited transparency into decision-making, which is problematic in post-disaster contexts where trust and accountability are essential. Explainable AI methods such as Grad-CAM++ can highlight image regions associated with post-disaster damage, but when models lack robust internal representations, the resulting visualizations often appear scattered or inconsistent and fail to capture the overall structural context. Future research should focus on explainability-driven training strategies such as using attention refinement or uncertainty-aware learning to improve how models allocate attention, so that Grad-CAM outputs highlight meaningful disaster-related features rather than scattered or irrelevant regions \cite{lagapEnhancingPostDisasterDamage2025}.
+
+\subsubsection{\textbf{Cross-event generalization \& class imbalance}}
+Remote sensing models often struggle to generalise across disaster types and regions. Systems trained on specific events show significant performance degradation when applied to different disaster contexts, with accuracy falling from 85.9\% in-domain to 80.3\% out-of-domain events \cite{kimDisasterAssessmentUsing2022}. Cross-event testing further highlights this limitation, with F1 scores dropping below 0.5 for disasters such as flooding and tsunamis, where submerged buildings cause severe misclassification errors. These challenges are exacerbated by class imbalance, where critical recovery states such as ``New buildings'' (180 samples) are heavily underrepresented compared to ``Not damaged'' (625 samples), and by systematic data gaps in which submerged or debris-obscured structures are missing from training datasets \cite{lagapEnhancingPostDisasterDamage2025}.
+
+
+\subsection{DATA ACQUISITION \& QUALITY CHALLENGES}
+
+\subsubsection{\textbf{Cost, accessibility \& temporal constraints}}
+Access to high-resolution satellite data is often expensive, difficult to acquire in real-time, or subject to cloud cover and operational delays \cite{lagapEnhancingPostDisasterDamage2025}. Due to the fixed temporal resolution of satellites, obtaining images immediately before and after disasters presents significant challenges, while higher-resolution satellites such as Landsat and Sentinel have longer revisit cycles that do not meet timeliness requirements for disaster response. The concentration of high-quality ground-truth data in developed countries also disadvantages disaster-prone developing countries that lack the statistical capacity and resources to produce quality local damage data for training effective models \cite{kimDisasterAssessmentUsing2022}.
+
+\subsubsection{\textbf{Atmospheric \& environmental limitations}}
+Disasters themselves often reduce the effectiveness of remote sensing. Cloud cover, smoke, and atmospheric disturbances can obscure satellite views during critical periods \cite{lagapEnhancingPostDisasterDamage2025}. In Heilongjiang Province between 2013 and 2020, the VIIRS satellite detected only 14.8\% of 298 forest fires caused by lightning strikes, with cloud cover and satellite transit timing preventing observation of the remaining 85.2\% \cite{jiaoForestFirePatterns2023}. Dense urban environments and debris further limit the effectiveness of optical imagery \cite{lagapEnhancingPostDisasterDamage2025}, while floods often coincide with heavy cloud cover that obstructs systems such as Landsat and MODIS \cite{teohExploringGenerativeAI2024}. These conditions underscore a critical challenge that disasters frequently occur under circumstances that compromise the very sensing capabilities needed for effective response.
+
+
+\subsection{OPERATIONAL \& METHODOLOGICAL CHALLENGES}
+
+\subsubsection{\textbf{Multi-temporal analysis \& recovery discrimination}}
+Effective post-disaster assessment requires tracking structural changes across three key periods: pre-disaster, event, and post-disaster. Distinguishing between damage, recovery, and new construction over time demands more advanced feature extraction, but current models still misclassify partially damaged, unrepaired, and recovered structures. Most research still focuses on single-timeframe classification, limiting longitudinal recovery analysis. The challenge is compounded by the need to separate damage-specific features from seasonal changes and urban development between image acquisitions \cite{kimDisasterAssessmentUsing2022}. While models such as Vision Transformers (ViT) can compare all three temporal frames given high-resolution imagery, this temporal reasoning remains inconsistent across damage categories \cite{lagapEnhancingPostDisasterDamage2025}.
+
+\subsubsection{\textbf{Synthetic data \& training limitations}}
+Synthetic imagery has been explored to address data scarcity, class imbalance, and scenario diversity in disaster response modeling. While effective for augmenting rare classes, achieving mAP50 scores of 96.7\% and F1 scores of 90.8\% in flood detection \cite{teohExploringGenerativeAI2024}, generated data often lacks realism and requires systematic filtering to remove artifacts such as cartoon-like imagery. Current approaches also face restrictions on the volume of data AI tools can generate and the need for carefully designed prompts to reduce bias. Lastly, synthetic datasets cannot capture the complex physical and spatial dynamics of real disasters, struggling to replicate environmental interactions and temporal dynamics across pre-disaster, event, and post-disaster stages.
 
 \section{Conclusion}
 Across six complementary studies, remote sensing emerges as central to disaster response: it delivers fast situation awareness from satellites and drones, but impact is limited by observability, domain shift, and label constraints.
