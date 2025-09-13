@@ -99,10 +99,40 @@ AI systems that align with these principles can mitigate not amplify existing in
 % How we can use it for fire detection (2 paper examples)
 % How we can use it for more general disaster detection (1 paper example)
 
+AI techniques excel at finding complex non linear patterns in data which is otherwise differentiable from noise to humans or other pattern recognition tooling. It is not a huge surprise that AI then is capable of excelling at finding complex patterns in a huge variety of data leading to massive improvements over the previous state of art in a variety of areas (such as classification of risky icebergs in shipping routes).
+
+\textbf{Example 1- Wildfires}
+
+Wildfire detection is an example of disaster detection where AI has been used since the 1990s. The authors of the paper begin with a review of ways various types of remote sensing data have led to improvements in rapid response systems. 
+
+Over time, researchers have explored increasingly more complex data signal sources- from one dimensional inputs such as thermometers, to using increasingly higher resolution satellite cloud data, to complex sensing tools which have high dimensional outputs (which can be helpful where, for example, clouds might block the forests from view of the satellite imagery). This issue of cloud cover blocking data is quite a big problem for systems entirely reliant on computer vision techniques. 
+
+\textbf{"Matching VIIRS forest fire location data with historical ground forest fire data shows that less than 30\% of forest fires were detected by satellite, and lightning strikes account for less than 15\% of forest fires."}
+(Chinese mountain paper)
+
+This shows a common theme in AI in general- that the quality of output system is dependent both on having high quality data, and also  designing systems to fully take advantage of the data that you do have. With this in mind, the paper sets out the goal of combining the strengths of computer vision techniques and transformer inspired mechanisms for more comprehensive analysis of wildfire patterns in a ConvNeXt-based architecture. System values extracting a lot of meaning from less data to build more scalable systems.
+
+\textbf{Algorithm design}
+"To reduce computational complexity while effectively capturing both spatial and channel-wise features, depthwise separable convolutions are utilized. Instead of Batch Normalization, Layer Normalization is applied, providing greater stability during training, especially with large datasets. The GELU activation function is employed to improve gradient flow and introduce better non-linearity, resulting in richer feature representations. Furthermore, the use of larger kernel sizes enables improved context aggregation, emulating the global receptive field characteristic of transformers."
+
+
+
+\textbf{Example 2- Iceberg classification}
+
+A more commercially focused project was using AI for detecting icebergs in Northern shipping routes. Traditional classifiers have been built on relying on principles which may not be true in all cases (such as icebergs that exhibit higher backscatter than the surrounding water). 
+
+Due to the enormous range of weather, lighting, sea,  and the physical conditions of the icebergs themselves, it has proven to be an enormously complex task to create a robust classifier for this. Conversely, such a system would be enormously valuable to the shipping industry, and therefore they are strongly motivated to invest in improving the technology.
+
+Another note about about this is the example is the complexity of getting good data to begin with. In the one year study, only 102 images in the required format were able to be collected which then all required extensive analysis by GIS specialists and then confirmed with rigorous cross referencing with other data sources. The paper uses this human labeled data to build a CNN model, which performs well compared to the limitations of previous techniques.
+
+
+
+
 \section{Challenges of using remote sensing for disaster response}
 
 
 \subsection{TECHNICAL \& DEPLOYMENT CHALLENGES}
+
 
 \subsubsection{\textbf{Resource-constrained deployment \& real-time processing}}
 A major challenge for remote sensing in disaster response is the difficulty of meeting the computational demands of modern machine learning and deep learning models required for real-time processing during critical response phases. While these models often deliver higher performance than lightweight alternatives, deploying them on embedded devices, mobile systems, or Unmanned Aerial Vehicles (UAVs) is hindered by limited processing power, strict energy requirements, and constrained communication bandwidth \cite{elbohy2025fusion}. For instance, Padmawar et al.'s flood forecasting system using Convolutional Neural Networks (CNN) + Modified Particle Swarm Optimization demonstrate high performance but are highly complex and expensive in real-time systems. Similarly, while Elbohy et al.'s ConvNeXt-Small model show promise for wildfire detection, achieving 99.05\% test accuracy on the Wildfire Prediction Dataset, it still lacks practical deployment strategies for real-world alert systems \cite{elbohy2025fusion}. This results in a constant trade-off between achieving high model accuracy and ensuring feasible deployment in post-disaster events.
@@ -133,7 +163,30 @@ Synthetic imagery has been explored to address data scarcity, class imbalance, a
 
 
 \section{Conclusion}
+Across six complementary studies, remote sensing emerges as central to disaster response: it delivers fast situation awareness from satellites and drones, but impact is limited by observability, domain shift, and label constraints.
 
+Empirically, the papers span fires, floods, sea-ice hazards, and built-environment damage. In Heilongjiang, satellites track seasonal fire trends but miss many lightning ignitions because of clouds and revisit timing: lightning causes 77.6\% of fires, yet under 30\% of all fires are detected by VIIRS (Visible Infrared Imaging Radiometer Suite) and under 15\% of lightning fires, and the monitorable fraction falls as lightning’s share rises ($r=-0.888$, $p=0.003$). When satellites do see events they typically \emph{precede} ground reports by about 1--8 hours, showing real early-warning value. For building damage, a lightweight pseudo-siamese grid classifier reaches about 91\% accuracy in-domain and about 80\% out-of-domain, and remains usable on new crises (Providencia: 97.5\% accuracy, $F_1=0.851$) despite coarse labels. For flood response, YOLOv8 trained on generative synthetic imagery attains $\text{mAP}_{50}=0.967$, $\text{mAP}_{[0.5,0.95]}=0.787$, and $F_1=0.908$, while tests on real drone scenes reveal transfer brittleness that argues for standardized capture and curation. For wildfires, a ConvNeXt-Small hybrid (CNN+Transformer) delivers about 99.05\% test accuracy on satellite tiles. In polar waters, fusing RCM SAR with ViT features, simple statistics, and ERA5 winds enables four-way classification (open water, sea ice, and each “with iceberg”) at 96.5\% accuracy with roughly 1\% false alarms; collapsing to target vs.\ no-target yields 98.9\%. Finally, enhanced super-resolution GANs (ESRGAN) directly target small objects and minority classes, improving recall where post-disaster monitoring needs it most.
+
+\textbf{Current challenges.} Common issues recur across hazards and sensors:
+\begin{itemize}
+  \item \textit{Observability gaps:} cloud or smoke occlusion, night/illumination limits for optical, and revisit latency (e.g., May--July lightning fires in the Daxing’an Mountains).
+  \item \textit{Domain shift:} synthetic$\rightarrow$real, drone$\rightarrow$satellite, region$\rightarrow$region can erode field performance despite strong lab metrics.
+  \item \textit{Label scarcity and imbalance:} rare but critical classes (destroyed buildings, small icebergs, early fire pixels) and coarse/incomplete labels bias training and evaluation.
+  \item \textit{Sensor heterogeneity:} mixing optical, SAR, thermal, UAV, and reanalyses requires careful calibration, metadata discipline, and uncertainty handling.
+  \item \textit{Deployment constraints:} bandwidth, power, and the need for robust, on-edge inference under adverse weather and communications.
+\end{itemize}
+
+\textbf{Future directions.} The line of work across these papers points to end-to-end, field-robust pipelines:
+\begin{enumerate}
+  \item \textit{Task-to-action frameworks:} operationalize concepts like FloodIntel (tasking$\rightarrow$standardized capture$\rightarrow$multi-modal fusion$\rightarrow$prioritized dispatch) with auditable decisions and latency budgets.
+  \item \textit{Smaller, faster models at the edge:} distill/quantize strong backbones (ConvNeXt-S, YOLOv8n/s/m) for drones, field laptops, and small satellites, with calibrated uncertainty.
+  \item \textit{Richer fusion:} couple SAR+optical+thermal+UAV with environmental context (e.g., ERA5 winds) to separate look-alikes (open water vs.\ sea ice) and operate through clouds/smoke.
+  \item \textit{Label-efficient learning:} self-supervision, weak/active learning, and ESRGAN super-resolution to raise recall on minority classes with limited ground truth.
+  \item \textit{Data and protocol standardization:} define drone flight profiles, view angles, ground sampling distance, and annotation rubrics so synthetic and real images match at train and test time.
+  \item \textit{Fair, reliable evaluation:} report imbalance-aware metrics, out-of-domain tests, occlusion stress tests, and end-to-end latency, not only headline mAP or accuracy.
+\end{enumerate}
+
+In sum, remote sensing already yields earlier wildfire alerts, faster flood triage, and safer polar navigation. Realizing its full promise now hinges on standardizing data collection, hardening models against shift, boosting rare-class recall (via ESRGANs and active learning), and embedding compact, trustworthy predictors inside operational workflows for end-to-end disaster response.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
