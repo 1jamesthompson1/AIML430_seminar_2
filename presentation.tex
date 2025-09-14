@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{tabularx}
+\usepackage{booktabs}
 \usepackage[backend=biber, style=verbose]{biblatex}
 \addbibresource{references.bib}
 
@@ -107,44 +108,54 @@
     \end{column}
   \end{columns}
 }
-\namedframe{Ray C. Marange}{Implications}{
-\section{IMPLICATION OF EFFECTIVE OR INEFFECTIVE DISASTER RESPONSE}
-Artificial intelligence has the potential to transform disaster response by accelerating decision-making, improving situational awareness, and optimizing resource allocation. However, the effectiveness of these systems is not solely technical it is deeply intertwined with social equity, data accessibility, and contextual relevance. The selected papers illustrate both the promise and the risks of AI-driven disaster management, especially when deployed in communities with limited infrastructure or socioeconomic vulnerability.
-\subsection{DISASTER ASSESSMENT USING COMPUTER VISION AND SATELLITE IMAGERY}
-\subsubsection{Effective response}
-Rapid quantification of structural damage enables targeted aid delivery to the most affected zones, reducing recovery time and minimizing resource waste.
-\subsubsection{Ineffective response}
-Misclassification or omission of damage—especially in informal settlements or low-visibility regions—can result in inequitable aid distribution, leaving vulnerable populations underserved.
-\subsection{EXPLORING GENERATIVE AI FOR YOLO-BASED OBJECT DETECTION}
-\subsubsection{Effective response}
-Generative augmentation addresses data scarcity, allowing object detection models to generalize across novel disaster zones and support real-time situational awareness.
-\subsubsection{Ineffective response}
-Over-reliance on synthetic data without validation may produce brittle models that fail in diverse real-world contexts, particularly in regions lacking annotated datasets.
-\subsection{FUSION OF CNN AND TRANSFORMER ARCHITECTURES FOR PROACTIVE WILDFIRE DETECTION}
-\subsubsection{Effective response}
-Hybrid ConvNeXt-Transformer models enable early wildfire detection, facilitating timely evacuations and reducing environmental and human impact.
-\subsubsection{Ineffective response}
-Delayed alerts due to poor integration or regional blind spots can allow fires to escalate before responders mobilize, especially in remote or underserved areas.
-\subsection{ENHANCING POST-DISASTER DAMAGE DETECTION WITH ESRGAN}
-\subsubsection{Effective response}
-Super-resolution and explainability tools (e.g., Grad-CAM++) enhance technical accuracy and build trust among decision-makers, supporting both immediate response and long-term recovery.
-\subsubsection{Ineffective response}
-Neglecting image quality and interpretability risks biased assessments, particularly in low-income regions where infrastructure may be harder to detect or classify.
-\subsection{FOREST FIRE PATTERNS AND LIGHTNING-CAUSED DETECTION IN CHINA}
-\subsubsection{Effective response}
-Regional pattern analysis ensures models are trained with ecological and geographic awareness, improving accuracy and cultural relevance in intervention strategies.
-\subsubsection{Ineffective response}
-Generic models that ignore local data may misrepresent fire regimes, leading to interventions that are misaligned with actual community needs.
-\subsection{SYNTHESIS}
-Together, these studies reveal that effective disaster response systems must go beyond technical precision. They must be:
+
+\namedframe{Ray Marange}{The Dual Edge of AI in Disaster Response}{
+\textbf{Technical Potential vs. Social Implications}
+\begin{table}[]
+  \scriptsize
+  \centering
+  \begin{tabular}{p{2.2cm} p{4.5cm} p{4.5cm}}
+    \toprule
+    \textbf{Focus Area} & \textbf{If Effective} & \textbf{If Ineffective} \\
+    \midrule
+    Damage Assessment & Enables rapid, targeted aid delivery & Excludes vulnerable populations \\
+    \midrule
+    Data Scarcity & Solves data shortages; generalizes to new zones & Creates brittle, failing models \\
+    \midrule
+    Early Detection & Enables early alerts for timely evacuations & Causes dangerous delays due to blind spots \\
+    \midrule
+    Image Clarity \& Trust & Builds accuracy and trust with explainable tools & Leads to biased outcomes in low-resource regions \\
+    \midrule
+    Context Matters & Context-aware for accurate interventions & Generic models misdirect resources \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+}
+
+\namedframe{Ray Marange}{Principles for Effective AI Implementation}{
+\textbf{Five Principles for Responsible AI Deployment}
+
+\begin{enumerate}
+  \item \textbf{Timely} \\ Enable early detection and rapid mobilization
+
+  \item \textbf{Accurate} \\ Leverage advanced techniques for precision
+
+  \item \textbf{Trustworthy} \\ Incorporate explainability to build confidence
+
+  \item \textbf{Context-Aware} \\ Integrate local socioeconomic and geographic data
+
+  \item \textbf{Equity-Driven} \\ Ensure no one is left behind due to data gaps
+\end{enumerate}
+}
+
+\namedframe{Ray Marange}{Key Takeaways}{
+\textbf{The Bottom Line}
 \begin{itemize}
-    \item \textbf{Timely} — enabling early detection and rapid mobilization.
-    \item \textbf{Accurate} — leveraging augmentation, super-resolution, and hybrid architectures.
-    \item \textbf{Trustworthy} — incorporating explainability and stakeholder confidence.
-    \item \textbf{Context-aware} — integrating socioeconomic and regional data.
-    \item \textbf{Equity-driven} — ensuring vulnerable populations are not excluded due to data gaps.
+  \item AI that aligns with these principles can mitigate disasters without amplifying inequalities
+  \item AI that ignores them risks turning technology into a liability
+  \item Effectiveness depends on balancing technical precision with social awareness
+  \item Context-specific implementation is crucial for success
 \end{itemize}
-AI systems that align with these principles can mitigate not amplify existing inequalities. Conversely, systems that ignore socioeconomic context risk turning technological interventions into liabilities, reinforcing disparities in aid, recovery, and resilience.
 }
 
 
@@ -265,7 +276,7 @@ AI systems that align with these principles can mitigate not amplify existing in
     \begin{itemize}
         \item DL models operate as "black boxes," providing no transparency into their decision-making process for critical damage assessments
         \item Trust issues: Emergency responders hesitate to act on AI predictions when lives are at stake without understanding the reasoning
-        \item Explainability attempts fall short: Grad-CAM++ visualizations often highlight irrelevant regions rather than actual structural damage, failing to provide meaningful explanations (Lagap et al., 2025)
+        \item Explainability attempts fall short: Grad-CAM++ visualizations often highlight irrelevant regions rather than actual structural damage, failing to provide meaningful explanations (Lagap \& Ghaffarian, 2025)
     \end{itemize}
 \end{itemize}
 }
@@ -278,7 +289,7 @@ AI systems that align with these principles can mitigate not amplify existing in
       \item Kim et al. (2022) investigated the application of computer vision techniques for water-related disaster damage assessment using satellite imagery
       \item Performance drops: 85.9\% (in-domain) → 80.3\% (out-of-domain), indicating models struggle to generalize across different disaster contexts despite strong performance on familiar events
       \item F1 scores fall below 0.5 for floods and tsunamis (Sunda Strait: 0.164, Midwestern Flooding: 0.495) primarily because submerged buildings become invisible in satellite imagery, causing systematic misclassification
-      \item Class imbalance: "New buildings" (180) vs "Not damaged" (625) samples creates strong prediction bias, while submerged structures are completely absent from training data
+      \item Class imbalance: "New buildings" (180) vs "Not damaged" (625) samples creates strong prediction bias, while submerged structures are completely absent from the Philippines post-Typhoon Haiyan dataset.
     \end{itemize}
 \end{itemize}
 }
@@ -289,20 +300,27 @@ AI systems that align with these principles can mitigate not amplify existing in
 \begin{itemize}
     \item \textbf{1. Cost, Accessibility \& Temporal Constraints}
     \begin{itemize}
-        \item High-resolution satellite data: expensive, difficult to acquire in real-time, subject to operational delays
-        \item Temporal mismatch: Landsat/Sentinel have longer revisit cycles that fail timeliness requirements for disaster response
-        \item Data inequality: High-quality ground-truth concentrated in developed countries while disaster-prone developing nations lack resources for local damage data (Kim et al., 2022)
+        \item Very high-resolution satellite data is often limited, delayed, or cost-prohibitive due to cloud cover and operational constraints
+        \item Trade-off dilemma: Higher spatial resolution satellites have longer revisit cycles that cannot meet disaster response timelines, while satellites with more frequent coverage lack the spatial detail needed for accurate damage assessment
+        \item Promising solution: ESRGAN techniques can enhance low-resolution imagery, achieving 4-5\% accuracy improvements for damage detection without expensive very high-resolution data (Lagap \& Ghaffarian, 2025)
     \end{itemize}
-    
+\end{itemize}
+}
+
+
+
+% Slide 5: Data Acquisition & Quality Challenges
+\namedframe{Dwayne Acosta}{Data Acquisition \& Quality Challenges}{
+\begin{itemize}
     \item \textbf{2. Atmospheric \& Environmental Limitations}
     \begin{itemize}
         \item VIIRS satellite detected only 14.8\% of 298 forest fires in Heilongjiang (2013-2020) due to cloud cover and transit timing (Jiao et al., 2023)
         \item Floods coincide with heavy cloud cover that obstructs Landsat and MODIS optical sensors
         \item Critical paradox: Disasters create the very conditions (smoke, debris, atmospheric disturbances) that compromise sensing capabilities when most needed
+
     \end{itemize}
 \end{itemize}
 }
-
 
 
 % Slide 5: Operational & Methodological Challenges
@@ -311,21 +329,68 @@ AI systems that align with these principles can mitigate not amplify existing in
     \item \textbf{1. Multi-Temporal Analysis \& Recovery Discrimination}
     \begin{itemize}
         \item Must track structural changes across pre-disaster → event → post-disaster periods to distinguish damage vs recovery vs new construction
-        \item Models consistently misclassify partially damaged and recovered structures, unable to separate disaster damage from seasonal/urban changes
+        \item Models consistently misclassify partially damaged and recovered structures as seen in the Philippines Typhoon Haiyan dataset. Models are also unable to separate disaster damage from seasonal/urban changes
         \item Vision Transformers can compare all three temporal frames but show inconsistent temporal reasoning across damage categories (Lagap et al., 2025)
     \end{itemize}
-    
+\end{itemize}    
+}
+
+
+
+% Slide 5: Operational & Methodological Challenges
+\namedframe{Dwayne Acosta}{Operational \& Methodological Challenges}{
+\begin{itemize}
+
     \item \textbf{2. Synthetic Data \& Training Limitations}
     \begin{itemize}
-        \item Generated imagery achieves high metrics (96.7\% mAP50, 90.8\% F1) but suffers from cartoon-like artifacts requiring systematic filtering (Teoh et al., 2024)
+        \item Generated imagery achieves high metrics (96.7\% mAP50, 90.8\% F1) when using YOLO-based models on the Malaysian flood detection but suffers from cartoon-like artifacts requiring systematic filtering (Teoh et al., 2024)
         \item Volume restrictions and prompt engineering challenges limit scalability of synthetic data generation
         \item Cannot replicate complex physical disaster dynamics, environmental interactions, or temporal progression from pre to post-disaster
     \end{itemize}
 \end{itemize}
 }
-\namedframe{Person name}{Conclusion}{
 
+\namedframe{Amine}{Conclusion — Essentials \& highlights}{
+\footnotesize
+\begin{itemize}
+  \item Remote sensing is central for rapid situational awareness; satellites often \emph{lead} ground reports by 1–8h.
+  \item Main limits: observability (clouds/smoke/revisit), domain shift, label scarcity/imbalance.
+  \item Fires: Lightning 77.6\%; VIIRS $<$30\% all/$<$15\% lightning; monitorable share $\downarrow$ with lightning ($r=-0.888$, $p=0.003$).
+  \item Buildings: Pseudo-siamese grid $\sim$91\% in / $\sim$80\% OOD; Providencia 97.5\%, $F_1=0.851$.
+  \item Floods/Wildfire/Polar/ESRGAN: YOLOv8 (synthetic) $\mathrm{mAP}_{50}=0.967$, $\mathrm{mAP}_{[0.5,0.95]}=0.787$, $F_1=0.908$ (field brittleness); ConvNeXt-S $\sim$99.05\%; RCM SAR+ViT+ERA5 $\rightarrow$ 96.5\% 4-way, 98.9\% target/no-target, $\sim$1\% false alarms; ESRGAN lifts small/minority-class recall.
+\end{itemize}
 }
+
+\namedframe{Amine}{Implications — Practice \& equity}{
+\footnotesize
+\begin{itemize}
+  \item \textbf{Effective:} earlier wildfire alerts, faster flood triage, safer polar routing $\Rightarrow$ shorter time-to-aid \& less waste.
+  \item \textbf{Ineffective:} synthetic$\to$real brittleness \& blind spots (clouds/informal settlements) $\Rightarrow$ inequitable aid/misallocation.
+  \item \textbf{Principles:} \emph{Timely • Accurate • Trustworthy/Transparent • Context-aware • Equity-driven}.
+  \item \textbf{Tactics:} uncertainty thresholds + explainability (e.g., Grad-CAM++); local ecological/socioeconomic priors; standardized capture/annotation.
+\end{itemize}
+}
+
+\namedframe{Amine}{Conclusion — Challenges \& Next steps}{
+\footnotesize
+\textbf{Challenges:}
+\begin{itemize}
+  \item \textit{Technical \& deployment:} edge compute/power/bandwidth; calibrated uncertainty \& interpretability.
+  \item \textit{Data acquisition \& quality:} cost/access/latency; clouds/smoke occlusion; scarce/imbalanced labels.
+  \item \textit{Operational \& methodological:} cross-event/region generalization; multi-temporal reasoning; synthetic$\leftrightarrow$real gap.
+\end{itemize}
+\textbf{Next steps:}
+\begin{itemize}
+  \item Task$\to$action pipelines with auditable decisions \& latency budgets.
+  \item Distill/quantize (ConvNeXt-S, YOLOv8n/s/m) for robust edge deployment.
+  \item SAR+optical+thermal+UAV fusion with ERA5 context to operate through clouds/smoke.
+  \item Label-efficient learning + ESRGAN to lift minority-class recall.
+  \item Standardized capture/annotations; fair evals (OOD, occlusion stress, latency \& uncertainty).
+\end{itemize}
+}
+
+
+
 
 
 \end{document}
