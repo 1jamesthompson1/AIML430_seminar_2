@@ -32,6 +32,18 @@
     #3
   \end{frame}
 }
+\newcommand{\sectionframe}[2]{
+  \begin{frame}
+    \begin{center}
+      \usebeamerfont{title}\usebeamercolor[fg]{title}\Huge #2\\
+      \vspace{2em}
+      \normalsize Presented by \\
+      \vspace{0.5em}
+      \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\LARGE
+      #1
+    \end{center}
+  \end{frame}
+}
 
 \begin{document}
 
@@ -39,17 +51,15 @@
 
 \namedframe{James Thompson}{Introduction: Disaster reponse}{
   \begin{columns}[T,totalwidth=\textwidth]
-    \begin{column}{0.5\textwidth}
-      Natural disasters are increasing in frequency and severity. In 2023 alone more than 93 million people were affected and almost 100,000 people killed.\footnotemark
-
+    \begin{column}{0.53\textwidth}
+    Natural disasters are increasing in frequency and severity. Around 100 million people are affected each year, with about 100,000 fatalities.\footnotemark\\
       \pause
       \vspace{1em}
-
-      An effective disaster detection and \alert{response} is crucial to \textbf{mitigate} and reduce impact.
+      An effective disaster detection and \alert{response} is crucial to \textbf{mitigate} and reduce impact. To do this requires \textbf{rapid} and \textbf{accurate} situational awareness.
 
     \end{column}
     \pause
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.45\textwidth}
       
       \begin{block}{Ground-based assessments are often}
         \begin{itemize}[<+->]
@@ -109,8 +119,9 @@
   \end{columns}
 }
 
-\namedframe{Ray Marange}{The Dual Edge of AI in Disaster Response}{
-\textbf{Technical Potential vs. Social Implications}
+\sectionframe{Ray Marange}{Implications}
+
+\namedframe{Ray Marange}{Implications: The Dual Edge of AI in Disaster Response}{
 \begin{table}[]
   \scriptsize
   \centering
@@ -132,8 +143,7 @@
 \end{table}
 }
 
-\namedframe{Ray Marange}{Principles for Effective AI Implementation}{
-\textbf{Five Principles for Responsible AI Deployment}
+\namedframe{Ray Marange}{Implications: Principles for Effective AI Implementation}{
 
 \begin{enumerate}
   \item \textbf{Timely} \\ Enable early detection and rapid mobilization
@@ -148,7 +158,7 @@
 \end{enumerate}
 }
 
-\namedframe{Ray Marange}{Key Takeaways}{
+\namedframe{Ray Marange}{Implications: Key Takeaways}{
 \textbf{The Bottom Line}
 \begin{itemize}
   \item AI that aligns with these principles can mitigate disasters without amplifying inequalities
@@ -158,108 +168,90 @@
 \end{itemize}
 }
 
+\sectionframe{David Franz}{Applications}
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{1. Applications of AI in disaster response}
+\namedframe{David Franz}{Applications: Overview}{
     \begin{itemize}
         \item Artificial intelligence techniques excel at finding complex non linear patterns in complex data which is otherwise differentiable from noise to humans
         \item Traditional methods fail under certain circumstances, but modern CNN and transformer based deep learning have been able to efficiently learn patterns from complex combinations of sensor data
         \item We examine applications in wildfire detection, flood response and post response
     \end{itemize}
-\end{itemize}
 }
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{2. Wildfires- Introduction}
+\namedframe{David Franz}{Applications: Wildfires}{
     \begin{itemize}
         \item Wildfire detection is an example of disaster detection where AI has been used since the 1990s, but over time researchers have explored increasingly more complex input data.
         \item Computer vision techniques using satellite imagery has lead to impressive results in some cases, but cloud cover blocking data is a big problem, with systems entirely reliant on computer vision techniques only correctly detecting fires on historical satellite data in 30\% of cases.
     \end{itemize}
-\end{itemize}
 }
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{3. Wildfires- ConvNeXt}
+\namedframe{David Franz}{Applications: Wildfires}{
+  \textbf{ConvNeXt Approach}
     \begin{itemize}
         \item The paper sets out the goal of combining the strengths of computer vision techniques and transformer inspired mechanisms for more comprehensive analysis of wildfire patterns in a ConvNeXt-based architecture. 
         \item The model is carefully designed to trade of computational complexity and accuracy, and many different model variations were released for different hardware types and use cases (ranging from super computer to in field local models).
         \item         This is able to combine many different sources of sensor data and extract meaningful patterns and achieve state of the art performance compared to other recent models.
     \end{itemize}
-\end{itemize}
 }
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{4. Flooding- Introduction}
+\namedframe{David Franz}{Applications: Flooding}{
     \begin{itemize}
         \item Flooding is the most frequent natural disaster causing widespread loss of life and destruction of property. 
         \item Some flooding will develop slowly, but the most dangerous kind (flash floods) can develop very quickly, leaving minimal time to evacuate or otherwise prepare. This is an area then where small improvements can translate to significant reduction of casualties. 
     \end{itemize}
-\end{itemize}
 }
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{5. Flooding- Human Impact and Economics}
+\namedframe{David Franz}{Applications: Flooding}{
+\textbf{Human Impact and Economics}
     \begin{itemize}
 
         \item Certain geographic areas which experience wet seasons are particularly susceptible to this danger- the paper focuses primarily on Malaysia, (of which, flooding accounts for 60\% of it's total occurrences of natural disasters), but mentions that globally 1.81 billion people are exposed to flood risk. Beyond the human impact, flooding can have a significant effect on the economy of countries.
         \item " In 2021 alone, water-related disaster resulted in economic losses amounting to \$224.2 billion  globally, nearly doubling the annual average of \$117.8 billion recorded from 2001 to 2020. A recent report also predicts that floods alone are expected to erode more than \$2 trillion from the global GDP by 2050."
 
     \end{itemize}
-\end{itemize}
 }
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{6. Flooding- YOLO Approach}
+\namedframe{David Franz}{Applications: Flooding}{
+  \textbf{YOLO Approach}
     \begin{itemize}
         \item The paper tries an approach of building a computer vision based classifier using a dataset of 3750 images collected from various generative AI tools, which were then preprocessed to get a final dataset of 6374 images of flood scenarios. 
         \item The prompts used to specify the images included specifying the expected country (Malaysia) and specified the angles they knew they would need for the classifier. 
         \item This is a uniquely low cost method of gathering a comprehensive dataset. In the context of Malaysia, rural areas are more highly effected by flash flooding, and in general flooding has a higher impact on areas with higher poverty. Such a low cost method of gathering data would be particularly valuable to areas with higher poverty.
     \end{itemize}
-\end{itemize}
 }
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{7. Flooding- YOLO Results}
+\namedframe{David Franz}{Applications: Flooding}{
+\textbf{YOLO Results}
     \begin{itemize}
         \item The final results are good, but not beating the state of the art with a mAP of 0.79 and F1-score of 90.8 (in comparison to Mask-R-CNN achieving mAP of 0.95 and F1-score of 97). 
         \item The uniquely low cost way of building the dataset combined with fairly strong performance do indicate that this is a promising direction to explore, and the paper suggests future research directions which they believe would improve performance further. 
         \item Particularly in areas of higher poverty, non synthetic datasets may not even exist, so understanding how to get good performance from synthetic data may help reduce inequities associated with this.
     \end{itemize}
-\end{itemize}
 }
 
 
 % Applications
-\namedframe{David Franz}{Applications}{
-\begin{itemize}
-    \item \textbf{8. Flooding- post flood water damage}
+\namedframe{David Franz}{Applications: Flooding}{
+\textbf{Post flood water damage}
     \begin{itemize}
         \item Another aspect of flood response is the post flooding stage. The YOLO based model is aims to improve detection of the flood itself, whereas the post flooding stage is based on fixing the problems caused by the flood.
         \item This paper builds a classifier using satellite imagery of buildings pre and post flood with simple labels to indicate different sorts of damage.  
         \item         The paper suggests particular architectural designs leading to their success such as separate encoders developed for pre and post disaster imagery, and also pre training on non disaster satellite imagery. 
         \item The model achieved strong performances of 91.4\% accuracy. 
     \end{itemize}
-\end{itemize}
 }
 
-
+\sectionframe{Dwayne Acosta}{Challenges}
 
 % Slide 1,2,3: Technical & Deployment Challenges
-\namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: Technical \& Deployment}{
 \begin{itemize}
     \item \textbf{1. Resource-Constrained Deployment and Real-Time Processing}
     \begin{itemize}
@@ -270,7 +262,7 @@
 \end{itemize}
 }
 
-\namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: Technical \& Deployment}{
 \begin{itemize}
     \item \textbf{2. Model Interpretability and Trust Issues}
     \begin{itemize}
@@ -282,7 +274,7 @@
 }
 
 
-\namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: Technical \& Deployment}{
 \begin{itemize}
     \item \textbf{3. Cross-Event Generalization and Class Imbalance}
     \begin{itemize}
@@ -296,7 +288,7 @@
 
 
 % Slide 4: Data Acquisition & Quality Challenges
-\namedframe{Dwayne Acosta}{Data Acquisition \& Quality Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: Data Acquisition \& Quality}{
 \begin{itemize}
     \item \textbf{1. Cost, Accessibility \& Temporal Constraints}
     \begin{itemize}
@@ -310,7 +302,7 @@
 
 
 % Slide 5: Data Acquisition & Quality Challenges
-\namedframe{Dwayne Acosta}{Data Acquisition \& Quality Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: Data Acquisition \& Quality}{
 \begin{itemize}
     \item \textbf{2. Atmospheric \& Environmental Limitations}
     \begin{itemize}
@@ -324,7 +316,7 @@
 
 
 % Slide 5: Operational & Methodological Challenges
-\namedframe{Dwayne Acosta}{Operational \& Methodological Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: Data Acquisition \& Quality}{
 \begin{itemize}
     \item \textbf{1. Multi-Temporal Analysis \& Recovery Discrimination}
     \begin{itemize}
@@ -338,7 +330,7 @@
 
 
 % Slide 5: Operational & Methodological Challenges
-\namedframe{Dwayne Acosta}{Operational \& Methodological Challenges}{
+\namedframe{Dwayne Acosta}{Challenges: operational \& methodological}{
 \begin{itemize}
 
     \item \textbf{2. Synthetic Data \& Training Limitations}
@@ -350,7 +342,9 @@
 \end{itemize}
 }
 
-\namedframe{Amine}{Conclusion — Essentials \& highlights}{
+\sectionframe{Amine Benaziza}{Conclusion}
+
+\namedframe{Amine Benaziza}{Conclusion: Essentials \& highlights}{
 \footnotesize
 \begin{itemize}
   \item Remote sensing is central for rapid situational awareness; satellites often \emph{lead} ground reports by 1–8h.
@@ -361,7 +355,7 @@
 \end{itemize}
 }
 
-\namedframe{Amine}{Implications — Practice \& equity}{
+\namedframe{Amine Benaziza}{Conclusion: Implications}{
 \footnotesize
 \begin{itemize}
   \item \textbf{Effective:} earlier wildfire alerts, faster flood triage, safer polar routing $\Rightarrow$ shorter time-to-aid \& less waste.
@@ -371,7 +365,7 @@
 \end{itemize}
 }
 
-\namedframe{Amine}{Conclusion — Challenges \& Next steps}{
+\namedframe{Amine Benaziza}{Conclusion: Challenges \& Next steps}{
 \footnotesize
 \textbf{Challenges:}
 \begin{itemize}
@@ -383,13 +377,11 @@
 \begin{itemize}
   \item Task$\to$action pipelines with auditable decisions \& latency budgets.
   \item Distill/quantize (ConvNeXt-S, YOLOv8n/s/m) for robust edge deployment.
-  \item SAR+optical+thermal+UAV fusion with ERA5 context to operate through clouds/smoke.
+  \item Combing remote sensing modalities (SAR, optical, weather).
   \item Label-efficient learning + ESRGAN to lift minority-class recall.
   \item Standardized capture/annotations; fair evals (OOD, occlusion stress, latency \& uncertainty).
 \end{itemize}
 }
-
-
 
 
 
