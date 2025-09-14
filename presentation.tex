@@ -158,6 +158,122 @@
 \end{itemize}
 }
 
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{1. Applications- Combining non linear sensor data}
+    \begin{itemize}
+        \item Artificial intelligence techniques excel at finding complex non linear patterns in complex data which is otherwise differentiable from noise to humans or other pattern recognition tooling
+        \item Traditional methods fail under certain circumstances, modern CNN and transformer based deep learning have been able to efficiently learn patterns from complex combinations of sensor data
+        \item We examine applications in wildfire detection, flood response and post response, and robust iceberg classification
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{2. Wildfires- Introduction}
+    \begin{itemize}
+        \item Wildfire detection is an example of disaster detection where AI has been used since the 1990s.
+        \item Over time, researchers have explored increasingly more complex data signal sources- from one dimensional inputs such as thermometers, to using increasingly higher resolution satellite cloud data, to complex sensing tools which have high dimensional outputs. 
+        \item This issue of cloud cover blocking data is a big problem, with systems entirely reliant on computer vision techniques only correctly detecting fires on historical satellite data in 30\% of cases.
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{3. Wildfires- ConvNeXt}
+    \begin{itemize}
+        \item In general, the quality of output system is dependent both on having high quality data, and designing systems to fully take advantage of the data that you do have. 
+        \item With this in mind, the paper sets out the goal of combining the strengths of computer vision techniques and transformer inspired mechanisms for more comprehensive analysis of wildfire patterns in a ConvNeXt-based architecture. 
+        \item This is able to combine many different sources of sensor data and extract meaningful patterns. The model is carefully designed to trade of computational complexity and accuracy, and many different model variations were released for different hardware types and use cases (ranging from super computer to in field local models).
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{4. Flooding- Introduction}
+    \begin{itemize}
+        \item Flooding is the most frequent natural disaster causing widespread loss of life and destruction of property. 
+        \item Some flooding will develop slowly, but the most dangerous kind (flash floods) can develop very quickly, leaving minimal time to evacuate or otherwise prepare. This is an area then where small improvements can translate to significant reduction of casualties. 
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{5. Flooding- Introduction}
+    \begin{itemize}
+
+        \item Certain geographic areas which experience wet seasons are particularly susceptible to this danger- the paper focuses primarily on Malaysia, (which accounts for 60\% of it's total occurrences of natural disasters), but mentions that globally 1.81 billion people are exposed to flood risk. Beyond the human impact, flooding can have a significant effect on the economy of countries.
+\begin{quote}
+    " In 2021 alone, water-related disaster resulted in economic losses amounting to \$224.2 billion  globally, nearly doubling the annual average of \$117.8 billion recorded from 2001 to 2020. A recent report also predicts that floods alone are expected to erode more than \$2 trillion from the global GDP by 2050."
+\end{quote}
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{6. YOLO Approach}
+    \begin{itemize}
+        \item The paper tries an approach of building a computer vision based classifier using a dataset of 3750 images collected from various generative AI tools, which were then preprocessed to get a final dataset of 6374 images of flood scenarios. 
+        \item The prompts used to specify the images included specifying the expected country (Malaysia) and specified the angles they knew they would need for the classifier. 
+        \item This is a uniquely low cost method of gathering a comprehensive dataset. In the context of Malaysia, rural areas are more highly effected by flash flooding, and in general flooding has a higher impact on areas with higher poverty. Such a low cost method of gathering data would be particularly valuable to areas with higher poverty.
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{7. YOLO Approach}
+    \begin{itemize}
+        \item The final results are good, but not beating the state of the art with a mAP of 0.79 and F1-score of 90.8 (in comparison to Mask-R-CNN achieving mAP of 0.95 and F1-score of 97). 
+        \item The uniquely low cost way of building the dataset combined with fairly strong performance do indicate that this is a promising direction to explore, and the paper suggests future research directions which they believe would improve performance further. 
+        \item Particularly in areas of higher poverty, non synthetic datasets may not even exist, so understanding how to get good performance from synthetic data may help reduce inequities associated with this.
+    \end{itemize}
+\end{itemize}
+}
+
+
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{8. Other applications- water detection in buildings}
+    \begin{itemize}
+        \item Another aspect of flood detection is the post flooding stage. The YOLO based model is aims to improve detection of the flood itself, whereas the post flooding stage is based on fixing the problems caused by the flood.
+        \item This paper builds a classifier using satellite imagery of buildings pre and post flood with simple labels to indicate different sorts of damage.  
+        \item         The paper suggests particular architectural designs leading to their success such as separate encoders developed for pre and post disaster imagery, and also pre training on non disaster satellite imagery. 
+        \item The model achieved strong performances of 91.4\% accuracy. 
+    \end{itemize}
+\end{itemize}
+}
+
+% Applications
+\namedframe{David Franz}{Applications}{
+\begin{itemize}
+    \item \textbf{9. Iceberg detection}
+    \begin{itemize}
+        \item A more commercially focused project was to use artificial intelligence to detect icebergs in northern shipping routes.  
+        \item Due to the enormous range of weather, lighting, sea,  and the physical conditions of the icebergs themselves, creating a robust classifier for this has proven to be an enormously complex task. The data required is also highly difficult to get and required extensive expert analysis by GIS specialists to be properly labeled. 
+        \item Conversely, such a system would be enormously valuable to the shipping industry, and therefore they are strongly motivated to invest in improving the technology. 
+        \item The final CNN based model is able to encode many features to build a robust classifier performing better than previous methods. This is an example of commercial value driving research directions, but this later leading to humanitarian benefits.
+    \end{itemize}
+\end{itemize}
+}
+
+
+
 % Slide 1,2,3: Technical & Deployment Challenges
 \namedframe{Dwayne Acosta}{Technical \& Deployment Challenges}{
 \begin{itemize}
