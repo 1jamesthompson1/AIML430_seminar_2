@@ -153,9 +153,9 @@ AI systems that align with these principles can mitigate not amplify existing in
 \begin{itemize}
     \item \textbf{1. Applications of AI in disaster response}
     \begin{itemize}
-        \item Artificial intelligence techniques excel at finding complex non linear patterns in complex data which is otherwise differentiable from noise to humans or other pattern recognition tooling
-        \item Traditional methods fail under certain circumstances, modern CNN and transformer based deep learning have been able to efficiently learn patterns from complex combinations of sensor data
-        \item We examine applications in wildfire detection, flood response and post response, and robust iceberg classification
+        \item Artificial intelligence techniques excel at finding complex non linear patterns in complex data which is otherwise differentiable from noise to humans
+        \item Traditional methods fail under certain circumstances, but modern CNN and transformer based deep learning have been able to efficiently learn patterns from complex combinations of sensor data
+        \item We examine applications in wildfire detection, flood response and post response
     \end{itemize}
 \end{itemize}
 }
@@ -177,7 +177,8 @@ AI systems that align with these principles can mitigate not amplify existing in
     \item \textbf{3. Wildfires- ConvNeXt}
     \begin{itemize}
         \item The paper sets out the goal of combining the strengths of computer vision techniques and transformer inspired mechanisms for more comprehensive analysis of wildfire patterns in a ConvNeXt-based architecture. 
-        \item This is able to combine many different sources of sensor data and extract meaningful patterns. The model is carefully designed to trade of computational complexity and accuracy, and many different model variations were released for different hardware types and use cases (ranging from super computer to in field local models).
+        \item The model is carefully designed to trade of computational complexity and accuracy, and many different model variations were released for different hardware types and use cases (ranging from super computer to in field local models).
+        \item         This is able to combine many different sources of sensor data and extract meaningful patterns and achieve state of the art performance compared to other recent models.
     \end{itemize}
 \end{itemize}
 }
@@ -199,7 +200,7 @@ AI systems that align with these principles can mitigate not amplify existing in
     \item \textbf{5. Flooding- Human Impact and Economics}
     \begin{itemize}
 
-        \item Certain geographic areas which experience wet seasons are particularly susceptible to this danger- the paper focuses primarily on Malaysia, (which accounts for 60\% of it's total occurrences of natural disasters), but mentions that globally 1.81 billion people are exposed to flood risk. Beyond the human impact, flooding can have a significant effect on the economy of countries.
+        \item Certain geographic areas which experience wet seasons are particularly susceptible to this danger- the paper focuses primarily on Malaysia, (of which, flooding accounts for 60\% of it's total occurrences of natural disasters), but mentions that globally 1.81 billion people are exposed to flood risk. Beyond the human impact, flooding can have a significant effect on the economy of countries.
         \item " In 2021 alone, water-related disaster resulted in economic losses amounting to \$224.2 billion  globally, nearly doubling the annual average of \$117.8 billion recorded from 2001 to 2020. A recent report also predicts that floods alone are expected to erode more than \$2 trillion from the global GDP by 2050."
 
     \end{itemize}
@@ -234,9 +235,9 @@ AI systems that align with these principles can mitigate not amplify existing in
 % Applications
 \namedframe{David Franz}{Applications}{
 \begin{itemize}
-    \item \textbf{8. Flooding- post flood water damge}
+    \item \textbf{8. Flooding- post flood water damage}
     \begin{itemize}
-        \item Another aspect of flood detection is the post flooding stage. The YOLO based model is aims to improve detection of the flood itself, whereas the post flooding stage is based on fixing the problems caused by the flood.
+        \item Another aspect of flood response is the post flooding stage. The YOLO based model is aims to improve detection of the flood itself, whereas the post flooding stage is based on fixing the problems caused by the flood.
         \item This paper builds a classifier using satellite imagery of buildings pre and post flood with simple labels to indicate different sorts of damage.  
         \item         The paper suggests particular architectural designs leading to their success such as separate encoders developed for pre and post disaster imagery, and also pre training on non disaster satellite imagery. 
         \item The model achieved strong performances of 91.4\% accuracy. 
